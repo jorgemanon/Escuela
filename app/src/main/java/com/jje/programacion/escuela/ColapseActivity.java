@@ -80,7 +80,6 @@ public class ColapseActivity extends AppCompatActivity {
             }
         }));
         prepareMovieData();
-
     }
 
     private void prepareMovieData() {
