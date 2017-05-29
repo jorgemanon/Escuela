@@ -35,14 +35,6 @@ public class ColapseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colapse);
-/*
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
-        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.negro));
-        collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.cielo));
-        collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.azul_fuerte));
-        collapsingToolbar.setExpandedTitleTextAppearance(R.style.expandedappbar);
-        collapsingToolbar.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
-*/
         sCarrera = (Spinner) findViewById(R.id.sCarrera1);
         sSemestre = (Spinner) findViewById(R.id.sSemestre1);
         sGrupo = (Spinner) findViewById(R.id.sGrupo1);
@@ -94,9 +86,6 @@ public class ColapseActivity extends AppCompatActivity {
     private void prepareMovieData() {
         alumnoList.add(new Alumno("Jorge", "ISC", "7 Semestre",R.drawable.menu_maestro));
         alumnoList.add(new Alumno("Armando", "II", "8 Semestre",R.drawable.menu_maestro));
-        alumnoList.add(new Alumno("Julio", "C", "2 Semestre",R.drawable.menu_maestro));
-        alumnoList.add(new Alumno("Martin", "C", "3 Semestre",R.drawable.menu_maestro));
-        alumnoList.add(new Alumno("Manuel", "ISC", "5 Semestre",R.drawable.menu_maestro));
         mAdapter.notifyDataSetChanged();
     }
 
