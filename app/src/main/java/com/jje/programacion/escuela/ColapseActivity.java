@@ -1,18 +1,22 @@
 package com.jje.programacion.escuela;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.jje.programacion.escuela.utilerias.Alumno;
 import com.jje.programacion.escuela.utilerias.AlumnoAdapter;
+import com.jje.programacion.escuela.utilerias.Log;
 import com.jje.programacion.escuela.utilerias.RecyclerTouchListener;
 import com.jje.programacion.escuela.utilerias.SpinnerUtileria;
 
@@ -31,14 +35,14 @@ public class ColapseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colapse);
+/*
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
-        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.blanco));
+        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.negro));
         collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.cielo));
-        collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimaryDark));
+        collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.azul_fuerte));
         collapsingToolbar.setExpandedTitleTextAppearance(R.style.expandedappbar);
         collapsingToolbar.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
-
-
+*/
         sCarrera = (Spinner) findViewById(R.id.sCarrera1);
         sSemestre = (Spinner) findViewById(R.id.sSemestre1);
         sGrupo = (Spinner) findViewById(R.id.sGrupo1);
@@ -60,7 +64,6 @@ public class ColapseActivity extends AppCompatActivity {
         SpinnerUtileria.spinner(getApplicationContext(),sSemestre,columnas,id,nombre,0);
         SpinnerUtileria.spinner(getApplicationContext(),sGrupo,columnas,id,nombre,0);
 
-        /* RECYCLER */
         recyclerView = (RecyclerView) findViewById(R.id.recyclerAlumno1);
 
         mAdapter = new AlumnoAdapter(alumnoList);
@@ -84,17 +87,16 @@ public class ColapseActivity extends AppCompatActivity {
 
             }
         }));
-
         prepareMovieData();
 
     }
 
     private void prepareMovieData() {
-        alumnoList.add(new Alumno("Jorge", "ISC", "7 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Armando", "II", "8 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Julio", "C", "2 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Martin", "C", "3 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Manuel", "ISC", "5 Semestre",R.drawable.dgti));
+        alumnoList.add(new Alumno("Jorge", "ISC", "7 Semestre",R.drawable.menu_maestro));
+        alumnoList.add(new Alumno("Armando", "II", "8 Semestre",R.drawable.menu_maestro));
+        alumnoList.add(new Alumno("Julio", "C", "2 Semestre",R.drawable.menu_maestro));
+        alumnoList.add(new Alumno("Martin", "C", "3 Semestre",R.drawable.menu_maestro));
+        alumnoList.add(new Alumno("Manuel", "ISC", "5 Semestre",R.drawable.menu_maestro));
         mAdapter.notifyDataSetChanged();
     }
 
