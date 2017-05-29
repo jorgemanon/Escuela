@@ -10,37 +10,28 @@
         android:id="@+id/MyAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blanco"
         android:fitsSystemWindows="true">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:src="@drawable/cbtis"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            android:fitsSystemWindows="true"/>
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_collapseMode="parallax"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true">
 
-            <!-- FILTRO DE ALUMNOS-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginStart="70dp"
                 android:id="@+id/lFiltro">
-                <TextView
-                    style="@style/titulo"
-                    android:text="Gestión Alumnos" />
 
-                <TextView
-                    style="@style/subtitulo"
-                    android:text="Crear tecnologia es forjar libertad" />
+                <ImageView style="@style/encabezado"/>
+
+                <TextView style="@style/titulo" android:text="Gestión Alumnos" />
+
+                <TextView style="@style/subtitulo" android:text="Crear tecnologia es forjar libertad" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ETUsuario.setText(usuario);
         ETContrasena.setText(contrasena);
         initListenerJSON();
+        BEntrar.callOnClick();
     }
 
     /* INICIALIZAR LOS LISTENER PARA LOS EVENTOS DE RESPONSE Y RESONSE ERROR*/
