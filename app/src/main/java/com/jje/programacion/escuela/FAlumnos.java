@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
+import com.jje.programacion.escuela.ServicioEscuela.Config;
 import com.jje.programacion.escuela.utilerias.Alumno;
 import com.jje.programacion.escuela.utilerias.AlumnoAdapter;
 import com.jje.programacion.escuela.utilerias.Footer;
@@ -123,7 +124,7 @@ public class FAlumnos extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(Config.TIEMPO_CARGA_FOOTER);
             } catch (InterruptedException e) {
                 Log.e(this.getClass().toString(), e.getMessage());
             }
