@@ -13,8 +13,8 @@ import java.util.List;
 public class AlumnoAdapter extends RecyclerView.Adapter {
     private List<Item> alumnoLista;
 
-    private static final int TYPE_COLOR = 0;
-    private static final int TYPE_FOOTER = 1;
+    private static final int TIPO_ALUMNO = 0;
+    private static final int TIPO_FOOTER = 1;
 
     public AlumnoAdapter(@NonNull List<Item> alumnoLista) {
         this.alumnoLista = alumnoLista;
@@ -23,9 +23,9 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         if (alumnoLista.get(position) instanceof Alumno) {
-            return TYPE_COLOR;
+            return TIPO_ALUMNO;
         } else if (alumnoLista.get(position) instanceof Item) {
-            return TYPE_FOOTER;
+            return TIPO_FOOTER;
         } else {
             throw new RuntimeException("ItemViewType unknown");
         }
@@ -33,7 +33,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == TYPE_COLOR) {
+        if (viewType == TIPO_ALUMNO) {
             return new AlumnoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alumno, parent, false));
         } else {
             return new FooterViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false));

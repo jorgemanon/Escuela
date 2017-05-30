@@ -16,7 +16,7 @@ public class SpinnerUtileria{
             for (int i=0; i<id.size(); i++){
                 matrixCursor.addRow(new Object[] { id.get(i).toString(), nombre.get(i)});
             }
-            SimpleCursorAdapter mAdapter = new SimpleCursorAdapter(context, R.layout.estilo_spinner_item, matrixCursor, new String[] {"nombre"}, new int[] {android.R.id.text1}, 0);
+            SimpleCursorAdapter mAdapter = new SimpleCursorAdapter(context, R.layout.estilo_spinner_item, matrixCursor, new String[] {columnas[1]}, new int[] {android.R.id.text1}, 0);
             mAdapter.setDropDownViewResource(R.layout.estilo_spinner_dropdown_item);
             spinner.setAdapter(mAdapter);
             spinner.setSelection(posicionSeleccionada);

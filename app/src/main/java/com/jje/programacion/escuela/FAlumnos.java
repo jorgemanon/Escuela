@@ -31,7 +31,7 @@ public class FAlumnos extends Fragment {
     private List<Item> alumnosList;
     private boolean hasMore;
     private AsyncTask asyncTask;
-    private RecyclerView recyclerView;
+    private RecyclerView rvAlumno;
     /*ATRIBUTOS*/
 
     public FAlumnos() {}
@@ -70,21 +70,21 @@ public class FAlumnos extends Fragment {
         alumnosList = getAlumnos();
         hasMore = true;
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rvAlumno);
-        recyclerView.setAdapter(new AlumnoAdapter(alumnosList));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rvAlumno = (RecyclerView) view.findViewById(R.id.rvAlumno);
+        rvAlumno.setAdapter(new AlumnoAdapter(alumnosList));
+        rvAlumno.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvAlumno.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+            public void onScrolled(RecyclerView rvAlumno, int dx, int dy) {
+                super.onScrolled(rvAlumno, dx, dy);
                 if (hasMore && !(hasFooter())) {
-                    LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) rvAlumno.getLayoutManager();
                     if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 2) {
                         alumnosList.add(new Footer());
                         Handler handler = new Handler();
                         final Runnable r = new Runnable() {
                             public void run() {
-                                FAlumnos.this.recyclerView.getAdapter().notifyItemInserted(alumnosList.size() - 1);
+                                FAlumnos.this.rvAlumno.getAdapter().notifyItemInserted(alumnosList.size() - 1);
                             }
                         };
                         handler.post(r);
@@ -136,7 +136,7 @@ public class FAlumnos extends Fragment {
             int size = alumnosList.size();
             alumnosList.remove(size - 1);//removes footer
             alumnosList.addAll(getAlumnos());
-            recyclerView.getAdapter().notifyItemRangeChanged(size - 1, alumnosList.size() - size);
+            rvAlumno.getAdapter().notifyItemRangeChanged(size - 1, alumnosList.size() - size);
         }
 
     }
