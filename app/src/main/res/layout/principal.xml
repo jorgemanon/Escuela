@@ -31,8 +31,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         android:background="@drawable/estilo_fondo_menu"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_opciones" />
+        app:headerLayout="@menu/activity_encabezado_menu"
+        app:menu="@menu/activity_menu" />
 
 
 

@@ -15,6 +15,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <TextView style="@style/titulo"     android:id="@+id/tvId"      android:text="Nombre:"  android:textAlignment="textStart"    />
         <TextView style="@style/titulo"     android:id="@+id/tvNombre"      android:text="Nombre:"  android:textAlignment="textStart"    />
         <TextView style="@style/subtitulo"  android:id="@+id/tvCarrera"     android:text="Carrera:" android:textAlignment="textStart"    />
         <TextView style="@style/subtitulo"  android:id="@+id/tvSemestre"    android:text="Semestre:" android:textAlignment="textStart"   />

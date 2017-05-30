@@ -10,11 +10,12 @@ import com.jje.programacion.escuela.R;
 public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
-    private TextView tvNombre, tvCarrera, tvSemestre;
+    private TextView tvNombre, tvCarrera, tvSemestre, tvId;
     private ImageView ivFoto;
 
     public AlumnoViewHolder(View view, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         super(view);
+        tvId = (TextView) view.findViewById(R.id.tvId);
         tvNombre = (TextView) view.findViewById(R.id.tvNombre);
         tvCarrera = (TextView) view.findViewById(R.id.tvCarrera);
         tvSemestre = (TextView) view.findViewById(R.id.tvSemestre);
@@ -23,18 +24,11 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
         itemView.setOnClickListener(this);
     }
 
-    public TextView getTvNombre() {
-        return tvNombre;
-    }
-    public TextView getTvCarrera() {
-        return tvCarrera;
-    }
-    public TextView getTvSemestre() {
-        return tvSemestre;
-    }
-    public ImageView getIvFoto() {
-        return ivFoto;
-    }
+    public TextView getTvId() {return tvId;}
+    public TextView getTvNombre() {return tvNombre;}
+    public TextView getTvCarrera() {return tvCarrera;}
+    public TextView getTvSemestre() {return tvSemestre;}
+    public ImageView getIvFoto() {return ivFoto;}
     @Override
     public void onClick(View v) {
         recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());

@@ -47,6 +47,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
         if (holder instanceof AlumnoViewHolder) {
             Alumno alumno = (Alumno) alumnoLista.get(position);
             AlumnoViewHolder alumnoViewHolder = (AlumnoViewHolder) holder;
+            alumnoViewHolder.getTvNombre().setText("Id: "+alumno.getId());
             alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre());
             alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
             alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
