@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.jje.programacion.escuela.ServicioEscuela.Config;
 import com.jje.programacion.escuela.utilerias.Alumno;
 import com.jje.programacion.escuela.utilerias.AlumnoAdapter;
 import com.jje.programacion.escuela.utilerias.Footer;
 import com.jje.programacion.escuela.utilerias.Item;
+import com.jje.programacion.escuela.utilerias.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.utilerias.SpinnerUtileria;
 
 import java.util.ArrayList;
@@ -71,7 +73,14 @@ public class FAlumnos extends Fragment {
         hasMore = true;
 
         rvAlumno = (RecyclerView) view.findViewById(R.id.rvAlumno);
-        rvAlumno.setAdapter(new AlumnoAdapter(alumnosList));
+        rvAlumno.setAdapter(new AlumnoAdapter(alumnosList, new RecyclerViewOnItemClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                if (alumnosList.get(position) instanceof Alumno) {
+                    Toast.makeText(getContext(), "Hola "+((Alumno) alumnosList.get(position)).toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }));
         rvAlumno.setLayoutManager(new LinearLayoutManager(getContext()));
         rvAlumno.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -94,6 +103,7 @@ public class FAlumnos extends Fragment {
                 }
             }
         });
+
     }
 
     @Override
@@ -147,16 +157,15 @@ public class FAlumnos extends Fragment {
 
     private ArrayList<Item> getAlumnos() {
         ArrayList<Item> alumnosList = new ArrayList<>(13);
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("1","Mario","Ingenieria Sistemas Computacionales","3",R.drawable.icono+""));
+        alumnosList.add(new Alumno("2","Maria","Ingenieria Sistemas Computacionales","5",R.drawable.icono+""));
+        alumnosList.add(new Alumno("3","Julieta","Ingenieria Sistemas Computacionales","7",R.drawable.icono+""));
+        alumnosList.add(new Alumno("4","Jorge","Ingenieria Sistemas Computacionales","2",R.drawable.icono+""));
+        alumnosList.add(new Alumno("5","Cesar","Ingenieria Sistemas Computacionales","5",R.drawable.icono+""));
+        alumnosList.add(new Alumno("6","Armando","Ingenieria Sistemas Computacionales","5",R.drawable.icono+""));
+        alumnosList.add(new Alumno("7","Carter","Ingenieria Sistemas Computacionales","6",R.drawable.icono+""));
+        alumnosList.add(new Alumno("8","Jairo","Ingenieria Sistemas Computacionales","6",R.drawable.icono+""));
+        alumnosList.add(new Alumno("9","Julian","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
         return alumnosList;
     }
 }

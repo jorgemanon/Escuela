@@ -11,13 +11,15 @@ import com.jje.programacion.escuela.R;
 import java.util.List;
 
 public class AlumnoAdapter extends RecyclerView.Adapter {
-    private List<Item> alumnoLista;
 
+    private List<Item> alumnoLista;
+    private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private static final int TIPO_ALUMNO = 0;
     private static final int TIPO_FOOTER = 1;
 
-    public AlumnoAdapter(@NonNull List<Item> alumnoLista) {
+    public AlumnoAdapter(@NonNull List<Item> alumnoLista, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         this.alumnoLista = alumnoLista;
+        this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TIPO_ALUMNO) {
-            return new AlumnoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alumno, parent, false));
+            return new AlumnoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alumno, parent, false),recyclerViewOnItemClickListener);
         } else {
             return new FooterViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false));
         }

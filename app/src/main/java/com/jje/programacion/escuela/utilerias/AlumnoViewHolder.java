@@ -7,48 +7,36 @@ import android.widget.TextView;
 
 import com.jje.programacion.escuela.R;
 
-public class AlumnoViewHolder extends RecyclerView.ViewHolder {
+public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+    private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private TextView tvNombre, tvCarrera, tvSemestre;
     private ImageView ivFoto;
 
-    public AlumnoViewHolder(View view) {
+    public AlumnoViewHolder(View view, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         super(view);
         tvNombre = (TextView) view.findViewById(R.id.tvNombre);
         tvCarrera = (TextView) view.findViewById(R.id.tvCarrera);
         tvSemestre = (TextView) view.findViewById(R.id.tvSemestre);
         ivFoto = (ImageView) view.findViewById(R.id.ivFoto);
+        this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
+        itemView.setOnClickListener(this);
     }
 
     public TextView getTvNombre() {
         return tvNombre;
     }
-
-    public void setTvNombre(TextView tvNombre) {
-        this.tvNombre = tvNombre;
-    }
-
     public TextView getTvCarrera() {
         return tvCarrera;
     }
-
-    public void setTvCarrera(TextView tvCarrera) {
-        this.tvCarrera = tvCarrera;
-    }
-
     public TextView getTvSemestre() {
         return tvSemestre;
     }
-
-    public void setTvSemestre(TextView tvSemestre) {
-        this.tvSemestre = tvSemestre;
-    }
-
     public ImageView getIvFoto() {
         return ivFoto;
     }
-
-    public void setIvFoto(ImageView ivFoto) {
-        this.ivFoto = ivFoto;
+    @Override
+    public void onClick(View v) {
+        recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());
     }
 }

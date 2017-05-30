@@ -19,6 +19,7 @@
         <item name="android:layout_marginTop">0dp</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:src">@drawable/cbtis</item>
+        <item name="android:background">@color/blanco</item>
     </style>
 
     <!-- ESTILO DE LOS TITULOS DE LOS FRAGMENTOS ALUMNOS, MAESTROS, MATERIAS, GRUPOS CARRERAS, ETC... -->
