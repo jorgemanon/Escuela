@@ -1,21 +1,13 @@
 package com.jje.programacion.escuela.utilerias;
 
-/**
- * Created by jorgemanon on 5/25/17.
- */
-
-public class Alumno {
-
-    private String nombre;
-    private String carrera;
-    private String semestre;
-    private int foto;
+public class Alumno extends Item{
+    private String nombre, carrera, semestre, foto;
 
     public Alumno(){
 
     }
 
-    public Alumno(String nombre,String carrera,String semestre,int foto){
+    public Alumno(String nombre,String carrera,String semestre, String foto){
         this.nombre = nombre;
         this.carrera = carrera;
         this.semestre = semestre;
@@ -46,11 +38,11 @@ public class Alumno {
         this.semestre = semestre;
     }
 
-    public int getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 }

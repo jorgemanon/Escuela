@@ -1,57 +1,59 @@
 package com.jje.programacion.escuela.utilerias;
 
+
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.jje.programacion.escuela.R;
 
 import java.util.List;
 
-public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.MyViewHolder> {
+public class AlumnoAdapter extends RecyclerView.Adapter {
+    private List<Item> alumnoLista;
 
-    private List<Alumno> alumnoList;
+    private static final int TYPE_COLOR = 0;
+    private static final int TYPE_FOOTER = 1;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvnombre, tvcarrera, tvsemestre;
-        public ImageView ivfoto;
+    public AlumnoAdapter(@NonNull List<Item> alumnoLista) {
+        this.alumnoLista = alumnoLista;
+    }
 
-        public MyViewHolder(View view) {
-            super(view);
-            tvnombre = (TextView) view.findViewById(R.id.tvNombre);
-            tvcarrera = (TextView) view.findViewById(R.id.tvCarrera);
-            tvsemestre = (TextView) view.findViewById(R.id.tvSemestre);
-            ivfoto = (ImageView) view.findViewById(R.id.ivfoto);
+    @Override
+    public int getItemViewType(int position) {
+        if (alumnoLista.get(position) instanceof Alumno) {
+            return TYPE_COLOR;
+        } else if (alumnoLista.get(position) instanceof Item) {
+            return TYPE_FOOTER;
+        } else {
+            throw new RuntimeException("ItemViewType unknown");
         }
     }
 
-
-    public AlumnoAdapter(List<Alumno> alumnoList) {
-        this.alumnoList = alumnoList;
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_COLOR) {
+            return new AlumnoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alumno, parent, false));
+        } else {
+            return new FooterViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false));
+        }
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.itemalumno, parent, false);
-
-        return new MyViewHolder(itemView);
-    }
-
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Alumno alumno = alumnoList.get(position);
-        holder.tvnombre.setText("Nombre: "+alumno.getNombre());
-        holder.tvcarrera.setText("Carrera: "+alumno.getCarrera());
-        holder.tvsemestre.setText("Semestre: "+alumno.getSemestre());
-        holder.ivfoto.setImageResource(alumno.getFoto());
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof AlumnoViewHolder) {
+            Alumno alumno = (Alumno) alumnoLista.get(position);
+            AlumnoViewHolder alumnoViewHolder = (AlumnoViewHolder) holder;
+            alumnoViewHolder.getTvNombre().setText(alumno.getNombre());
+            alumnoViewHolder.getTvCarrera().setText(alumno.getCarrera());
+            alumnoViewHolder.getTvSemestre().setText(alumno.getSemestre());
+            alumnoViewHolder.getIvFoto().setImageResource(Integer.parseInt(alumno.getFoto()));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return alumnoList.size();
+        return alumnoLista.size();
     }
 }

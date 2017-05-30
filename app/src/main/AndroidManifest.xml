@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Principal"></activity>
-        <activity android:name=".ColapseActivity"></activity>
     </application>
 
 </manifest>
