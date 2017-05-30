@@ -43,23 +43,17 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
                             android.R.anim.overshoot_interpolator)
                     .commit();
         } else if (id == R.id.nav_maestro) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         } else if (id == R.id.nav_materia) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         } else if (id == R.id.nav_grupo) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         } else if (id == R.id.nav_carrera) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         } else if (id == R.id.nav_usuarios) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         }else if (id == R.id.nav_cerrar_sesion) {
-            startActivity(new Intent(this,ColapseActivity.class));
-            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

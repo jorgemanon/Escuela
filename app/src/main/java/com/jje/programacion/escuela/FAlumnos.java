@@ -1,23 +1,23 @@
 package com.jje.programacion.escuela;
 
 import android.content.Context;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.jje.programacion.escuela.utilerias.Alumno;
 import com.jje.programacion.escuela.utilerias.AlumnoAdapter;
-import com.jje.programacion.escuela.utilerias.RecyclerTouchListener;
+import com.jje.programacion.escuela.utilerias.Footer;
+import com.jje.programacion.escuela.utilerias.Item;
 import com.jje.programacion.escuela.utilerias.SpinnerUtileria;
 
 import java.util.ArrayList;
@@ -25,12 +25,13 @@ import java.util.List;
 
 public class FAlumnos extends Fragment {
 
-    /*componentes*/
+    /*ATRIBUTOS*/
     private Spinner sCarrera,sSemestre,sGrupo;
+    private List<Item> alumnosList;
+    private boolean hasMore;
+    private AsyncTask asyncTask;
     private RecyclerView recyclerView;
-    private AlumnoAdapter mAdapter;
-    private List<Alumno> alumnoList = new ArrayList<>();
-    private OnFragmentInteractionListener mListener;
+    /*ATRIBUTOS*/
 
     public FAlumnos() {}
 
@@ -44,7 +45,6 @@ public class FAlumnos extends Fragment {
      */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         sCarrera = (Spinner) view.findViewById(R.id.sCarrera);
         sSemestre = (Spinner) view.findViewById(R.id.sSemestre);
         sGrupo = (Spinner) view.findViewById(R.id.sGrupo);
@@ -62,47 +62,43 @@ public class FAlumnos extends Fragment {
         nombre.add("Ingenieria en Informatica");
         nombre.add("Contabilidad");
 
-        SpinnerUtileria.spinner(getContext(),sCarrera,columnas,id,nombre,0);
-        SpinnerUtileria.spinner(getContext(),sSemestre,columnas,id,nombre,0);
-        SpinnerUtileria.spinner(getContext(),sGrupo,columnas,id,nombre,0);
+        SpinnerUtileria.spinner(view.getContext(),sCarrera,columnas,id,nombre,0);
+        SpinnerUtileria.spinner(view.getContext(),sSemestre,columnas,id,nombre,0);
+        SpinnerUtileria.spinner(view.getContext(),sGrupo,columnas,id,nombre,0);
 
-        /* RECYCLER */
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerAlumno);
+        alumnosList = getAlumnos();
+        hasMore = true;
 
-        mAdapter = new AlumnoAdapter(alumnoList);
-
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), LinearLayoutManager.VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(view.getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+        recyclerView = (RecyclerView) view.findViewById(R.id.rvAlumno);
+        recyclerView.setAdapter(new AlumnoAdapter(alumnosList));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onClick(View view, int position) {
-                Alumno alumno = alumnoList.get(position);
-                Toast.makeText(view.getContext(), alumno.getNombre() + " es seleccionado", Toast.LENGTH_SHORT).show();
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                com.jje.programacion.escuela.utilerias.Log.e("jma","entrando al scroll");
+                if (hasMore && !(hasFooter())) {
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                    if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 2) {
+                        alumnosList.add(new Footer());
+                        Handler handler = new Handler();
+                        final Runnable r = new Runnable() {
+                            public void run() {
+                                FAlumnos.this.recyclerView.getAdapter().notifyItemInserted(alumnosList.size() - 1);
+                            }
+                        };
+                        handler.post(r);
+                        asyncTask = new BackgroundTask();
+                        asyncTask.execute((Object[]) null);
+                    }
+                }
             }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-        prepareMovieData();
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.falumnos, container, false);
-    }
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -113,19 +109,51 @@ public class FAlumnos extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (asyncTask != null) {
+            asyncTask.cancel(false);
+        }
     }
 
-    private void prepareMovieData() {
-        alumnoList.add(new Alumno("Jorge", "ISC", "7 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Armando", "II", "8 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Julio", "C", "2 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Martin", "C", "3 Semestre",R.drawable.dgti));
-        alumnoList.add(new Alumno("Manuel", "ISC", "5 Semestre",R.drawable.dgti));
-        mAdapter.notifyDataSetChanged();
+    private class BackgroundTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                Log.e(this.getClass().toString(), e.getMessage());
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            int size = alumnosList.size();
+            alumnosList.remove(size - 1);//removes footer
+            alumnosList.addAll(getAlumnos());
+            recyclerView.getAdapter().notifyItemRangeChanged(size - 1, alumnosList.size() - size);
+        }
+
+    }
+
+    private boolean hasFooter() {
+        return alumnosList.get(alumnosList.size() - 1) instanceof Footer;
+    }
+
+    private ArrayList<Item> getAlumnos() {
+        ArrayList<Item> alumnosList = new ArrayList<>(13);
+
+        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
+
+        return alumnosList;
     }
 }

@@ -90,4 +90,19 @@
         <item name="android:textColor">@color/blanco</item>
     </style>
 
+    <!-- APP BAR COLAPSE LAYOUT-->
+    <style name="barColapse">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/blanco</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+<!-- APP TOOLBAR COLAPSE LAYOUT-->
+    <style name="toolbarCollapse">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="app:layout_collapseMode">parallax</item>
+        <item name="app:layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
 </resources>
