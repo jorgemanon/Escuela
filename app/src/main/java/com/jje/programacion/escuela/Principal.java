@@ -53,7 +53,8 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
         } else if (id == R.id.nav_usuarios) {
 
         }else if (id == R.id.nav_cerrar_sesion) {
-
+            startActivity(new Intent(this,MainActivity.class));
+            overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

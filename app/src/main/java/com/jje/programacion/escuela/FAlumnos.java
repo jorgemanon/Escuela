@@ -76,7 +76,6 @@ public class FAlumnos extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                com.jje.programacion.escuela.utilerias.Log.e("jma","entrando al scroll");
                 if (hasMore && !(hasFooter())) {
                     LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                     if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 2) {
@@ -147,13 +146,16 @@ public class FAlumnos extends Fragment {
 
     private ArrayList<Item> getAlumnos() {
         ArrayList<Item> alumnosList = new ArrayList<>(13);
-
-        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
-        alumnosList.add(new Alumno("Jorge Mañon","ISC","9",R.drawable.icono+""));
-
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
+        alumnosList.add(new Alumno("Jorge Mañon Arroyo","Ingenieria Sistemas Computacionales","9",R.drawable.icono+""));
         return alumnosList;
     }
 }

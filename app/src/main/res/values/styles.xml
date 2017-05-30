@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/blanco</item>
-        <item name="colorPrimaryDark">@color/negro</item>
+        <item name="colorPrimaryDark">@color/cielo</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -26,7 +26,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/negro</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
     </style>
@@ -36,7 +36,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/negro</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
     </style>
@@ -101,8 +101,6 @@
     <style name="toolbarCollapse">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="app:layout_collapseMode">parallax</item>
-        <item name="app:layout_scrollFlags">scroll|exitUntilCollapsed</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
 </resources>
