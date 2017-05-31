@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

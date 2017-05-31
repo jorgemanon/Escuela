@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela.ServicioEscuela;
+package com.jje.programacion.escuela.utilerias;
 
 import android.app.Activity;
 import android.content.Context;

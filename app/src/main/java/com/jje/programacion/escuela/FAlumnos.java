@@ -15,12 +15,12 @@ import android.view.ViewGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.jje.programacion.escuela.ServicioEscuela.Config;
-import com.jje.programacion.escuela.utilerias.Alumno;
-import com.jje.programacion.escuela.utilerias.AlumnoAdapter;
-import com.jje.programacion.escuela.utilerias.Footer;
-import com.jje.programacion.escuela.utilerias.Item;
-import com.jje.programacion.escuela.utilerias.RecyclerViewOnItemClickListener;
+import com.jje.programacion.escuela.utilerias.Config;
+import com.jje.programacion.escuela.modelo.Alumno;
+import com.jje.programacion.escuela.adapter.AlumnoAdapter;
+import com.jje.programacion.escuela.modelo.Footer;
+import com.jje.programacion.escuela.modelo.Item;
+import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.utilerias.SpinnerUtileria;
 
 import java.util.ArrayList;
@@ -28,13 +28,15 @@ import java.util.List;
 
 public class FAlumnos extends Fragment {
 
-    /*ATRIBUTOS*/
+    /**/
+
+    /* RECYCLER REQUIRED */
     private Spinner sCarrera,sSemestre,sGrupo;
     private List<Item> alumnosList;
     private boolean hasMore;
     private AsyncTask asyncTask;
     private RecyclerView rvAlumno;
-    /*ATRIBUTOS*/
+    /* RECYCLER REQUIRED */
 
     public FAlumnos() {}
 
@@ -51,7 +53,6 @@ public class FAlumnos extends Fragment {
         sCarrera = (Spinner) view.findViewById(R.id.sCarrera);
         sSemestre = (Spinner) view.findViewById(R.id.sSemestre);
         sGrupo = (Spinner) view.findViewById(R.id.sGrupo);
-
         String[] columnas = new String[]{"_id","nombre"};
         List id = new ArrayList();
         id.add(1);

@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 
 public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 

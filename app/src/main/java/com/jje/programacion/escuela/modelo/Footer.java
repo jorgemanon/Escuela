@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.modelo;
 
 /**
  * Created by jorgemanon on 5/30/17.

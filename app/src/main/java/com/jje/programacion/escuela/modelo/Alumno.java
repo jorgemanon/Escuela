@@ -1,6 +1,6 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.modelo;
 
-public class Alumno extends Item{
+public class Alumno extends Item {
     private String id, nombre, carrera, semestre, foto;
 
     public Alumno(){
@@ -32,6 +32,6 @@ public class Alumno extends Item{
     }
 
     public String toString(){
-        return "ID: "+nombre+"\nCARRERA: "+carrera+"\nSEMESTRE: "+semestre;
+        return "ID: "+id+"\nNOMBRE: "+nombre+"\nCARRERA: "+carrera+"\nSEMESTRE: "+semestre;
     }
 }

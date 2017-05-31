@@ -1,12 +1,16 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.adapter;
 
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.modelo.Alumno;
+import com.jje.programacion.escuela.viewholder.AlumnoViewHolder;
+import com.jje.programacion.escuela.viewholder.FooterViewHolder;
+import com.jje.programacion.escuela.modelo.Item;
+import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 
 import java.util.List;
 
@@ -47,7 +51,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
         if (holder instanceof AlumnoViewHolder) {
             Alumno alumno = (Alumno) alumnoLista.get(position);
             AlumnoViewHolder alumnoViewHolder = (AlumnoViewHolder) holder;
-            alumnoViewHolder.getTvNombre().setText("Id: "+alumno.getId());
+            alumnoViewHolder.getTvId().setText("Id: "+alumno.getId());
             alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre());
             alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
             alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());

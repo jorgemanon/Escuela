@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="com.jje.programacion.escuela.MainActivity"
+    tools:context="com.jje.programacion.escuela.activitys.MainActivity"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:background="@drawable/fondo">
 

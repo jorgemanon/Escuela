@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela;
+package com.jje.programacion.escuela.activitys;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.jje.programacion.escuela.ServicioEscuela.Config;
+import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.utilerias.Config;
 import com.jje.programacion.escuela.ServicioEscuela.VolleyEscuela;
 import com.jje.programacion.escuela.utilerias.Log;
 import android.view.View;
@@ -60,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("jma","Response--->"+response.toString());
-                }catch(Exception e){
-
-                }
+                }catch(Exception e){}
 
             }
         };
@@ -78,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initComponents(){
-        añadirLlave("usuario","1111");
-        añadirLlave("1111","jorge123");
+        añadirLlave("usuario","carter");
+        añadirLlave("carter","jorge123");
         ETUsuario = (EditText) findViewById(R.id.ETUsuario);
         ETContrasena = (EditText) findViewById(R.id.ETContrasena);
         BEntrar = (Button) findViewById(R.id.BEntrar);
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     rqt.put("aplicacion","app");
                     rqt.put("usuario",ETUsuario.getText());
-                    rqt.put("contrasenia",ETContrasena.getText());
+                    rqt.put("password",ETContrasena.getText());
                     json.put("rqt",rqt);
                     Log.e("jma",json.toString());
                 }catch(Exception e){
