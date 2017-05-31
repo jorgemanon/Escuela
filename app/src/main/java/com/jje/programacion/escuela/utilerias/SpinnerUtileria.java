@@ -7,10 +7,12 @@ import android.widget.Spinner;
 
 import com.jje.programacion.escuela.R;
 
+import org.json.JSONArray;
+
 import java.util.List;
 
 public class SpinnerUtileria{
-    public static void spinner(Context context, Spinner spinner,String[] columnas ,List id,List nombre,int posicionSeleccionada){
+    public static void spinner(Context context, Spinner spinner, String[] columnas , List id,List nombre, int posicionSeleccionada){
 
             MatrixCursor matrixCursor= new MatrixCursor(columnas);
             for (int i=0; i<id.size(); i++){

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initComponents(){
         añadirLlave("usuario","carter");
-        añadirLlave("carter","jorge123");
+        añadirLlave("carter","123");
         ETUsuario = (EditText) findViewById(R.id.ETUsuario);
         ETContrasena = (EditText) findViewById(R.id.ETContrasena);
         BEntrar = (Button) findViewById(R.id.BEntrar);
@@ -88,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject json = new JSONObject();
                 JSONObject rqt = new JSONObject();
                 try{
-                    rqt.put("aplicacion","app");
-                    rqt.put("usuario",ETUsuario.getText());
-                    rqt.put("password",ETContrasena.getText());
+                    rqt.put("usuario",ETUsuario.getText().toString());
+                    rqt.put("password",ETContrasena.getText().toString());
                     json.put("rqt",rqt);
-                    Log.e("jma",json.toString());
+                    Log.e("jma","rqt-->"+json.toString());
                 }catch(Exception e){
                     Log.e("jma",e.getMessage());
                 }

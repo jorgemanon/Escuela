@@ -29,9 +29,10 @@
 
         <ImageView
             android:id="@+id/ivFoto"
+            android:background="@drawable/estilo_foto"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/icono"/>
+            android:src="@drawable/dgti"/>
 
     </LinearLayout>
 
