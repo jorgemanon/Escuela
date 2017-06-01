@@ -1,10 +1,10 @@
 package com.jje.programacion.escuela.viewholder;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.github.snowdream.android.widget.SmartImageView;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 
@@ -12,7 +12,7 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
 
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private TextView tvNombre, tvCarrera, tvSemestre, tvId;
-    private SmartImageView ivFoto;
+    private ImageView ivFoto;
 
     public AlumnoViewHolder(View view, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         super(view);
@@ -20,7 +20,7 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
         tvNombre = (TextView) view.findViewById(R.id.tvNombre);
         tvCarrera = (TextView) view.findViewById(R.id.tvCarrera);
         tvSemestre = (TextView) view.findViewById(R.id.tvSemestre);
-        ivFoto = (SmartImageView) view.findViewById(R.id.ivFoto);
+        ivFoto = (ImageView) view.findViewById(R.id.ivFoto);
         this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
         itemView.setOnClickListener(this);
     }
@@ -29,7 +29,7 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
     public TextView getTvNombre() {return tvNombre;}
     public TextView getTvCarrera() {return tvCarrera;}
     public TextView getTvSemestre() {return tvSemestre;}
-    public SmartImageView getIvFoto() {return ivFoto;}
+    public ImageView getIvFoto() {return ivFoto;}
 
     @Override
     public void onClick(View v) {

@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_weight="2">
 
-        <com.github.snowdream.android.widget.SmartImageView
+        <ImageView
             android:id="@+id/ivFoto"
             android:layout_width="100dp"
             android:layout_height="100dp"/>

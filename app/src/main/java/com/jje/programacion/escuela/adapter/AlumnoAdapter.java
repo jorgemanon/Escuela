@@ -10,10 +10,14 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.github.snowdream.android.widget.WebImage;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.modelo.Alumno;
@@ -67,12 +71,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
 
-                /************************/
                 String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                alumnoViewHolder.getIvFoto().setImageUrl(
-                        url,
-                        new Rect()
-                );
+                //alumnoViewHolder.getIvFoto().setImageBitmap();
             }
         }catch(Exception e){
             Log.e("jma",e.toString());
