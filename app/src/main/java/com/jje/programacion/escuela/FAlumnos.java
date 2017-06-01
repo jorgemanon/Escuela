@@ -133,13 +133,13 @@ public class FAlumnos extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            /*******************/
             int size = alumno.size();
             alumno.remove(size - 1);
-            //alumno.addAll(getAlumnos());
+            alumno.addAll(alumno);
             rvAlumno.getAdapter().notifyItemRangeChanged(size - 1, alumno.size() - size);
-
+            /*******************/
         }
-
     }
 
     private boolean hasFooter() {

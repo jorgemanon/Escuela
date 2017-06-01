@@ -1,19 +1,12 @@
 package com.jje.programacion.escuela.viewholder;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.snowdream.android.widget.SmartImage;
 import com.github.snowdream.android.widget.SmartImageView;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
-import com.jje.programacion.escuela.utilerias.Log;
 
 public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -37,6 +30,7 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
     public TextView getTvCarrera() {return tvCarrera;}
     public TextView getTvSemestre() {return tvSemestre;}
     public SmartImageView getIvFoto() {return ivFoto;}
+
     @Override
     public void onClick(View v) {
         recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());
