@@ -2,32 +2,27 @@ package com.jje.programacion.escuela.adapter;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.modelo.Alumno;
-import com.jje.programacion.escuela.utilerias.Config;
+import com.jje.programacion.escuela.modelo.Item;
 import com.jje.programacion.escuela.utilerias.Log;
 import com.jje.programacion.escuela.viewholder.AlumnoViewHolder;
 import com.jje.programacion.escuela.viewholder.FooterViewHolder;
-import com.jje.programacion.escuela.modelo.Item;
-import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
+
+import static com.jje.programacion.escuela.R.drawable.uni;
 
 public class AlumnoAdapter extends RecyclerView.Adapter {
 
@@ -72,32 +67,20 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
 
-                Bitmap originalBitmap = getImagen("http://localhost/fotos/1.png");
-                RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(alumnoViewHolder.getIvFoto().getResources(), originalBitmap);
-                roundedDrawable.setCornerRadius(originalBitmap.getHeight());
-                alumnoViewHolder.getIvFoto().setImageDrawable(roundedDrawable);
+                String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
+                alumnoViewHolder.getIvFoto().setImageUrl(
+                        url,
+                        new Rect(
+                                alumnoViewHolder.getIvFoto().getLeft(),
+                                alumnoViewHolder.getIvFoto().getTop(),
+                                alumnoViewHolder.getIvFoto().getRight(),
+                                alumnoViewHolder.getIvFoto().getBottom()
+                        )
+                );
             }
         }catch(Exception e){
             Log.e("jma",e.toString());
         }
-
-    }
-
-    private Bitmap getImagen(String url) {
-        Bitmap bm = null;
-        try {
-            URL _url = new URL(url);
-            URLConnection con = _url.openConnection();
-            con.connect();
-            InputStream is = con.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            is.close();
-        } catch (IOException e) {
-            Log.e("jma","Error: "+e.getMessage());
-        }
-        return bm;
     }
 
     @Override
