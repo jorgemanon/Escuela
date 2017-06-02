@@ -8,14 +8,10 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.github.snowdream.android.widget.WebImage;
 import com.jje.programacion.escuela.R;
@@ -71,8 +67,16 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
 
-                String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                //alumnoViewHolder.getIvFoto().setImageBitmap();
+                try{
+                    String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
+                    Log.e("jma",url);
+                    Bitmap imagen = new WebImage(url,500,500).getBitmap(alumnoViewHolder.getIvFoto().getContext());
+                    imagen = getRoundedCornerBitmap(imagen,imagen.getWidth());
+                    alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
+
+                }catch(Exception e){
+                    Log.e("jma","Error imagen-->"+e);
+                }
             }
         }catch(Exception e){
             Log.e("jma",e.toString());
@@ -87,7 +91,6 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-
         final int color = 0xff424242;
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
