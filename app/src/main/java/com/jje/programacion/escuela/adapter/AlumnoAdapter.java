@@ -66,16 +66,24 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre()+" "+alumno.getApellidoPaterno()+" "+alumno.getApellidoMaterno());
                 alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
-
+                /************************
                 try{
                     String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                    Log.e("jma",url);
                     Bitmap imagen = new WebImage(url,500,500).getBitmap(alumnoViewHolder.getIvFoto().getContext());
                     imagen = getRoundedCornerBitmap(imagen,imagen.getWidth());
                     alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
 
                 }catch(Exception e){
                     Log.e("jma","Error imagen-->"+e);
+                }
+                /************************/
+
+                String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
+                Bitmap imagen = new WebImage(url,100,100).getBitmap(alumnoViewHolder.getIvFoto().getContext());
+                if(imagen!=null){
+                    Log.e("jma","si existe la imagen-->");
+                }else{
+                    Log.e("jma","no existe la imagen-->"+url);
                 }
             }
         }catch(Exception e){
