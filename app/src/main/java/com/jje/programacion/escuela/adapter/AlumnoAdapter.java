@@ -66,24 +66,19 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre()+" "+alumno.getApellidoPaterno()+" "+alumno.getApellidoMaterno());
                 alumnoViewHolder.getTvCarrera().setText("Carrera:"+alumno.getCarrera());
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
-                /************************
+
                 try{
                     String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                    Bitmap imagen = new WebImage(url,500,500).getBitmap(alumnoViewHolder.getIvFoto().getContext());
-                    imagen = getRoundedCornerBitmap(imagen,imagen.getWidth());
+                    Log.e("jma",url);
+                    /******************************
+                    alumnoViewHolder.getIvFoto().setImageUrl(url, new Rect());
+                    /******************************/
+                    Bitmap imagen = new WebImage(url,300,300).getBitmap(alumnoViewHolder.getIvFoto().getContext());
+                    imagen = redondearBitmap(imagen,imagen.getHeight());
                     alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
-
+                    /******************************/
                 }catch(Exception e){
                     Log.e("jma","Error imagen-->"+e);
-                }
-                /************************/
-
-                String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                Bitmap imagen = new WebImage(url,100,100).getBitmap(alumnoViewHolder.getIvFoto().getContext());
-                if(imagen!=null){
-                    Log.e("jma","si existe la imagen-->");
-                }else{
-                    Log.e("jma","no existe la imagen-->"+url);
                 }
             }
         }catch(Exception e){
@@ -96,7 +91,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
         return alumnoLista.size();
     }
 
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+
+    public static Bitmap redondearBitmap(Bitmap bitmap, int pixels) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
         final int color = 0xff424242;

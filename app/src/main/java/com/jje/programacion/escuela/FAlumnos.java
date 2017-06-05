@@ -210,7 +210,8 @@ public class FAlumnos extends Fragment {
                             rvAlumno.setAdapter(new AlumnoAdapter(alumno, new RecyclerViewOnItemClickListener() {
                                 @Override
                                 public void onClick(View v, int position) {
-                                    if (alumno.get(position) instanceof Alumno && alumno.size()>0) {
+                                    Log.e("jma","Posicion-->"+position);
+                                    if (alumno.size()>0 && alumno.get(position) instanceof Alumno) {
                                         Toast.makeText(getContext(), "Hola "+((Alumno) alumno.get(position)).toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -219,8 +220,9 @@ public class FAlumnos extends Fragment {
                             break;
                     }
                     Log.e("jma","Response--->"+response.toString());
-                }catch(Exception e){}
-
+                }catch(Exception e){
+                    Log.e("jma","Error-->"+e.toString());
+                }
             }
         };
 

@@ -31,7 +31,7 @@
             android:id="@+id/ivFoto"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/estilo_foto"/>
+            android:src="@drawable/dgti"/>
 
     </LinearLayout>
 

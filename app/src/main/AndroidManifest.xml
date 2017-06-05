@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:windowSoftInputMode="stateHidden">
-        <activity android:name=".activitys.MainActivity" android:windowSoftInputMode="stateHidden|adjustResize">
+        <activity android:name=".activitys.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
