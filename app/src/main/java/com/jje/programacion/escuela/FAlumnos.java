@@ -1,6 +1,7 @@
 package com.jje.programacion.escuela;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.jje.programacion.escuela.activitys.Principal;
 import com.jje.programacion.escuela.utilerias.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +38,7 @@ public class FAlumnos extends Fragment {
     private Response.Listener listener;
     private Response.ErrorListener listenerError;
     private View view;
+    private final FAlumnos fragment = this;
 
     /* RECYCLER REQUIRED */
     private Spinner sCarrera,sSemestre,sGrupo;
@@ -60,6 +64,7 @@ public class FAlumnos extends Fragment {
         sSemestre = (Spinner) view.findViewById(R.id.sSemestre);
         sGrupo = (Spinner) view.findViewById(R.id.sGrupo);
         rvAlumno = (RecyclerView) view.findViewById(R.id.rvAlumno);
+        alumno = new ArrayList<Item>();
         hasMore = true;
         /*inicializacion en fragment para JSON*/
         this.view = view;
@@ -93,7 +98,7 @@ public class FAlumnos extends Fragment {
             new VolleyEscuela(view.getContext()).sendJSON(Config.url_alumno,new JSONObject(), listener, listenerError);
 
         }catch(Exception e){
-            Log.e("jma",e.getMessage());
+            Log.e(e.getMessage());
         }
     }
 
@@ -126,7 +131,7 @@ public class FAlumnos extends Fragment {
             try {
                 Thread.sleep(Config.TIEMPO_CARGA_FOOTER);
             } catch (InterruptedException e) {
-                Log.e(this.getClass().toString(), e.getMessage());
+                Log.e(e.getMessage());
             }
             return null;
         }
@@ -143,13 +148,12 @@ public class FAlumnos extends Fragment {
     }
 
     private boolean hasFooter() {
-        Log.e("jma","Tamaño-->"+alumno.size());
+        Log.e("Tamaño-->"+alumno.size());
         if(alumno.size()==0){
             return false;
         }else{
             return alumno.get(alumno.size() - 1) instanceof Footer;
         }
-
     }
 
     /* INICIALIZAR LOS LISTENER PARA LOS EVENTOS DE RESPONSE Y RESONSE ERROR*/
@@ -160,11 +164,11 @@ public class FAlumnos extends Fragment {
                 try{
                     List<String> id = new ArrayList<String>();
                     List<String> nombre = new ArrayList<String>();
-                    alumno = new ArrayList<Item>();
+
                     JSONArray jsonArray = null;
                     switch(response.getString("tipo")){
                         case "carrera":
-                            Log.e("jma","Es carrera");
+                            Log.e("Es carrera");
                             jsonArray = response.getJSONArray("carreras");
                             for(int i = 0; i < jsonArray.length(); i++){
                                 id.add(jsonArray.getJSONObject(i).getString("carreraId"));
@@ -173,7 +177,7 @@ public class FAlumnos extends Fragment {
                             SpinnerUtileria.spinner(view.getContext(),sCarrera,new String[]{"_id","nombre"},id,nombre,0);
                             break;
                         case "semestre":
-                            Log.e("jma","Es semestre");
+                            Log.e("Es semestre");
                             jsonArray = response.getJSONArray("semestres");
                             for(int i = 0; i < jsonArray.length(); i++){
                                 id.add(jsonArray.getJSONObject(i).getString("semestreId"));
@@ -182,7 +186,7 @@ public class FAlumnos extends Fragment {
                             SpinnerUtileria.spinner(view.getContext(),sSemestre,new String[]{"_id","nombre"},id,nombre,0);
                             break;
                         case "aula":
-                            Log.e("jma","Es aula");
+                            Log.e("Es aula");
                             jsonArray = response.getJSONArray("aulas");
                             for(int i = 0; i < jsonArray.length(); i++){
                                 id.add(jsonArray.getJSONObject(i).getString("aulaId"));
@@ -191,7 +195,7 @@ public class FAlumnos extends Fragment {
                             SpinnerUtileria.spinner(view.getContext(),sGrupo,new String[]{"_id","nombre"},id,nombre,0);
                             break;
                         case "alumno":
-                            Log.e("jma","Es alumno");
+                            Log.e("Es alumno");
                             jsonArray = response.getJSONArray("alumnos");
                             for(int i = 0; i < jsonArray.length(); i++){
                                 alumno.add(new Alumno(
@@ -207,29 +211,48 @@ public class FAlumnos extends Fragment {
                                         jsonArray.getJSONObject(i).getString("foto")
                                 ));
                             }
+
                             rvAlumno.setAdapter(new AlumnoAdapter(alumno, new RecyclerViewOnItemClickListener() {
                                 @Override
                                 public void onClick(View v, int position) {
-                                    Log.e("jma","Posicion-->"+position);
                                     if (alumno.size()>0 && alumno.get(position) instanceof Alumno) {
                                         Toast.makeText(getContext(), "Hola "+((Alumno) alumno.get(position)).toString(), Toast.LENGTH_SHORT).show();
+
+
+                                        Bundle bundle = new Bundle();
+                                        Intent intent = new Intent(getActivity(),Principal.class);
+
+                                        intent.putExtra("fragmento", "FAlumnoDetalle");
+                                        intent.putExtra("alumnoId", ((Alumno) alumno.get(position)).getAlumnoId());
+                                        intent.putExtra("nombre", ((Alumno) alumno.get(position)).getNombre());
+                                        intent.putExtra("apellidoPaterno", ((Alumno) alumno.get(position)).getApellidoPaterno());
+                                        intent.putExtra("apellidoMaterno", ((Alumno) alumno.get(position)).getApellidoMaterno());
+                                        intent.putExtra("fechaNacimiento", ((Alumno) alumno.get(position)).getFechaNacimiento());
+                                        intent.putExtra("direccion", ((Alumno) alumno.get(position)).getDireccion());
+                                        intent.putExtra("telefono", ((Alumno) alumno.get(position)).getTelefono());
+                                        intent.putExtra("semestre", ((Alumno) alumno.get(position)).getSemestre());
+                                        intent.putExtra("carrera", ((Alumno) alumno.get(position)).getCarrera());
+                                        intent.putExtra("foto", ((Alumno) alumno.get(position)).getFoto());
+                                        startActivity(intent);
+
                                     }
                                 }
                             }));
                             rvAlumno.setLayoutManager(new LinearLayoutManager(getContext()));
                             break;
                     }
-                    Log.e("jma","Response--->"+response.toString());
+                    Log.e("Response--->"+response.toString());
                 }catch(Exception e){
-                    Log.e("jma","Error-->"+e.toString());
+                    Log.e("Error-->"+e.toString());
                 }
             }
         };
 
+
         listenerError = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                com.jje.programacion.escuela.utilerias.Log.e("jma", "Error Respuesta en JSON: " + error.getMessage());
+                com.jje.programacion.escuela.utilerias.Log.e( "Error Respuesta en JSON: " + error.getMessage());
                 error.printStackTrace();
 
             }

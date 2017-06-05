@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                     }
-                    Log.e("jma","Response--->"+response.toString());
+                    Log.e("Response--->"+response.toString());
                 }catch(Exception e){}
 
             }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         listenerError = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("jma", "Error Respuesta en JSON: " + error.getMessage());
+                Log.e( "Error Respuesta en JSON: " + error.getMessage());
                 error.printStackTrace();
 
             }
@@ -91,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     rqt.put("usuario",ETUsuario.getText().toString());
                     rqt.put("password",ETContrasena.getText().toString());
                     json.put("rqt",rqt);
-                    Log.e("jma","rqt-->"+json.toString());
+                    Log.e("rqt-->"+json.toString());
                 }catch(Exception e){
-                    Log.e("jma",e.getMessage());
+                    Log.e(e.getMessage());
                 }
                 VolleyEscuela escuela = new VolleyEscuela(getApplicationContext());
                 escuela.sendJSON(Config.url_login,json, listener, listenerError);

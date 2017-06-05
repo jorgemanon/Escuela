@@ -3,14 +3,17 @@ package com.jje.programacion.escuela.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.jje.programacion.escuela.FAlumnoDetalle;
 import com.jje.programacion.escuela.FAlumnos;
 import com.jje.programacion.escuela.FPrincipal;
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.utilerias.Log;
 
 public class Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -22,13 +25,28 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.contenedor,new FPrincipal())
-                .addToBackStack(null)
-                .setCustomAnimations(
-                        android.R.anim.overshoot_interpolator,
-                        android.R.anim.overshoot_interpolator)
-                .commit();
+        Bundle args = getIntent().getExtras();
+        if(args!=null){
+            String fragmento = args.getString("fragmento");
+            switch(fragmento){
+                case "FAlumnoDetalle":
+                    Log.e("es alumno detalle");
+
+                    FAlumnoDetalle fa = new FAlumnoDetalle();
+                    fa.setArguments(args);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contenedor,fa)
+                            .addToBackStack(null)
+                            .commit();
+                    break;
+            }
+
+        }else{
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.contenedor,new FPrincipal())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     @Override
@@ -66,4 +84,5 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
 
         return true;
     }
+
 }

@@ -12,6 +12,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- DISEÑO DEL LAYOUT-->
+    <style name="layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:layout_marginRight">3dp</item>
+        <item name="android:background">@color/blanco</item>
+    </style>
+
     <!-- ENCABEZADO DE LA APLICACION-->
     <style name="encabezado">
         <item name="android:layout_width">match_parent</item>
@@ -100,10 +109,17 @@
         <item name="android:background">@color/blanco</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
-<!-- APP TOOLBAR COLAPSE LAYOUT-->
+
+    <!-- APP TOOLBAR COLAPSE LAYOUT-->
     <style name="toolbarCollapse">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <!-- DISEÑO DE LA FOTO DEL ESTUDIANTE -->
+    <style name="foto">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
     </style>
 </resources>

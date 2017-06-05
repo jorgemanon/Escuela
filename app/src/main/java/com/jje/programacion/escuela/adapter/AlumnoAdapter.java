@@ -18,11 +18,13 @@ import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.modelo.Alumno;
 import com.jje.programacion.escuela.modelo.Item;
+import com.jje.programacion.escuela.utilerias.Config;
 import com.jje.programacion.escuela.utilerias.Log;
 import com.jje.programacion.escuela.viewholder.AlumnoViewHolder;
 import com.jje.programacion.escuela.viewholder.FooterViewHolder;
 
 import java.util.List;
+import static com.jje.programacion.escuela.utilerias.Config.redondearBitmapFoto;
 
 public class AlumnoAdapter extends RecyclerView.Adapter {
 
@@ -61,6 +63,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
         try{
             if (holder instanceof AlumnoViewHolder) {
                 Alumno alumno = (Alumno) alumnoLista.get(position);
+                Log.e("Contador-->"+getItemCount());
                 AlumnoViewHolder alumnoViewHolder = (AlumnoViewHolder) holder;
                 alumnoViewHolder.getTvId().setText("Id: "+alumno.getAlumnoId());
                 alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre()+" "+alumno.getApellidoPaterno()+" "+alumno.getApellidoMaterno());
@@ -68,47 +71,25 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
 
                 try{
-                    String url = "http://192.168.2.1/fotos/"+alumno.getFoto();
-                    Log.e("jma",url);
-                    /******************************
-                    alumnoViewHolder.getIvFoto().setImageUrl(url, new Rect());
-                    /******************************/
-                    Bitmap imagen = new WebImage(url,300,300).getBitmap(alumnoViewHolder.getIvFoto().getContext());
-                    imagen = redondearBitmap(imagen,imagen.getHeight());
+                    /**********
+                    alumnoViewHolder.getIvFoto().setImageUrl(Config.url_fotos+alumno.getFoto(),new Rect());
+                    /**********/
+
+                    Log.e(Config.url_fotos+alumno.getFoto());
+                    Bitmap imagen = new WebImage(Config.url_fotos+alumno.getFoto(),700,700).getBitmap(alumnoViewHolder.getIvFoto().getContext());
+                    imagen = redondearBitmapFoto(imagen,1000);
                     alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
-                    /******************************/
                 }catch(Exception e){
-                    Log.e("jma","Error imagen-->"+e);
+                    Log.e("Error imagen-->"+e);
                 }
             }
         }catch(Exception e){
-            Log.e("jma",e.toString());
+            Log.e(e.toString());
         }
     }
 
     @Override
     public int getItemCount() {
         return alumnoLista.size();
-    }
-
-
-    public static Bitmap redondearBitmap(Bitmap bitmap, int pixels) {
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-        final int color = 0xff424242;
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        final RectF rectF = new RectF(rect);
-        final float roundPx = pixels;
-
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(color);
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-
-        return output;
     }
 }

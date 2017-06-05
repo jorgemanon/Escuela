@@ -16,16 +16,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                style="@style/layout"
                 android:orientation="vertical"
                 android:id="@+id/lFiltro">
                 <TextView style="@style/titulo" android:text="Gestión Alumnos" />
                 <TextView style="@style/subtitulo" android:text="Crear tecnologia es forjar libertad" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    style="@style/layout"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -35,8 +33,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    style="@style/layout"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -46,8 +43,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    style="@style/layout"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -62,8 +58,7 @@
     </android.support.design.widget.AppBarLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/layout"
             android:orientation="vertical"
             android:paddingTop="24dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">

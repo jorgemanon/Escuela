@@ -10,15 +10,20 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/layout"
             android:orientation="vertical">
 
-            <TextView style="@style/subtitulo" android:id="@+id/tvId"       android:text="ID:" />
-            <TextView style="@style/subtitulo" android:id="@+id/tvNombre"   android:text="NOMBRE:" />
-            <TextView style="@style/subtitulo" android:id="@+id/tvCarrera"  android:text="CARRERA:" />
-            <TextView style="@style/subtitulo" android:id="@+id/tvSemestre" android:text="SEMESTRE:" />
+            <TextView style="@style/titulo" android:id="@+id/tvIdDetalle"               android:textAlignment="textStart"  android:text="ID:" />
+            <TextView style="@style/titulo" android:id="@+id/tvNombreDetalle"           android:textAlignment="textStart"  android:text="NOMBRE:" />
+            <TextView style="@style/titulo" android:id="@+id/tvFechaNacimientoDetalle"  android:textAlignment="textStart"  android:text="CUMPLEAÑOS:" />
+            <TextView style="@style/titulo" android:id="@+id/tvDireccionDetalle"        android:textAlignment="textStart"  android:text="DIRECCIÓN:" />
+            <TextView style="@style/titulo" android:id="@+id/tvTelefonoDetalle"         android:textAlignment="textStart"  android:text="TELEFONO:" />
+            <TextView style="@style/titulo" android:id="@+id/tvSemestreDetalle"         android:textAlignment="textStart"  android:text="SEMESTRE:" />
+            <TextView style="@style/titulo" android:id="@+id/tvCarreraDetalle"          android:textAlignment="textStart"  android:text="CARRERA:" />
+            <com.github.snowdream.android.widget.SmartImageView android:id="@+id/ivFotoDetalle" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
         </LinearLayout>
+
     </ScrollView>
 
 </FrameLayout>
