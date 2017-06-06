@@ -4,24 +4,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.jje.programacion.escuela.R;
-import com.jje.programacion.escuela.utilerias.Config;
-import com.jje.programacion.escuela.ServicioEscuela.VolleyEscuela;
-import com.jje.programacion.escuela.utilerias.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.ServicioEscuela.VolleyEscuela;
+import com.jje.programacion.escuela.utilerias.Config;
+import com.jje.programacion.escuela.utilerias.Log;
+import com.jje.programacion.escuela.utilerias.MyActivity;
+
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MyActivity {
 
     private EditText ETUsuario;
     private EditText ETContrasena;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initComponents(){
         añadirLlave("usuario","carter");
-        añadirLlave("carter","123");
+        añadirLlave("carter","1234");
         ETUsuario = (EditText) findViewById(R.id.ETUsuario);
         ETContrasena = (EditText) findViewById(R.id.ETContrasena);
         BEntrar = (Button) findViewById(R.id.BEntrar);

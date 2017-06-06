@@ -55,6 +55,7 @@
                     android:id="@+id/btAlumnoAceptar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:foreground="@color/background_button"
                     android:text="Filtrar"/>
             </LinearLayout>
 

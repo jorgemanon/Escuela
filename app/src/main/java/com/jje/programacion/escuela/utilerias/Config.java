@@ -9,6 +9,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.view.View;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -25,7 +27,6 @@ public class Config extends Activity{
     public static final String url_historial = servidor+"Servicio/Historial.php";
     public static final String url_alumno = servidor+"Servicio/Alumno.php";
     public static final String url_fotos = servidor+"fotos/";
-
 
     public static RequestQueue requestQueue;
     public static int TIEMPO_CARGA_FOOTER = 2000;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER

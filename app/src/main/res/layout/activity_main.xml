@@ -22,8 +22,6 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:orientation="vertical">
 
-
-
             <LinearLayout
                 android:id="@+id/L1"
                 android:layout_width="fill_parent"
@@ -39,24 +37,13 @@
                     android:scaleType="fitXY"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="casual"
-                    android:textColor="@color/font_color"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:text="Usuario:" />
+                <TextView style="@style/titulo" android:text="Username:"/>
 
                 <EditText
                     android:id="@+id/ETUsuario"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:drawableRight="@drawable/account"
-                    android:fontFamily="casual"
-                    android:textColor="@color/font_color"
-                    android:textSize="18dp"
-                    android:background="@drawable/estilo_input"/>
+                    style="@style/titulo"
+                    android:drawableLeft="@drawable/account"
+                    android:background="@drawable/estilo_edit_text"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/L2"
@@ -65,35 +52,18 @@
                 android:orientation="vertical"
                 android:gravity="center|center_vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="casual"
-                    android:textColor="@color/font_color"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:text="Contraseña:" />
+                <TextView style="@style/titulo" android:text="Password:" />
 
                 <EditText
                     android:id="@+id/ETContrasena"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:drawableRight="@drawable/lock"
-                    android:fontFamily="casual"
-                    android:textColor="@color/font_color"
-                    android:textSize="18dp"
-                    android:background="@drawable/estilo_input"
+                    style="@style/titulo"
+                    android:drawableLeft="@drawable/lock"
+                    android:background="@drawable/estilo_edit_text"
                     android:inputType="textPassword"/>
             </LinearLayout>
             <Button
                 android:id="@+id/BEntrar"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:fontFamily="casual"
-                android:textSize="18dp"
-                android:foreground="@color/background_button"
-                android:background="@drawable/estilo_button"
+                style="@style/boton"
                 android:text="Entrar"/>
         </LinearLayout>
     </ScrollView>
