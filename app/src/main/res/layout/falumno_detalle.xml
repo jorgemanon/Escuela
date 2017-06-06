@@ -1,29 +1,55 @@
-<FrameLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FAlumnoDetalle">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FAlumnoDetalle"
+    android:background="@color/blanco">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/MyAppbar"
+        style="@style/barColapse">
 
-        <LinearLayout
-            style="@style/layout"
-            android:orientation="vertical">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            style="@style/toolbarCollapse"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <TextView style="@style/titulo" android:id="@+id/tvIdDetalle"               android:textAlignment="textStart"  android:text="ID:" />
-            <TextView style="@style/titulo" android:id="@+id/tvNombreDetalle"           android:textAlignment="textStart"  android:text="NOMBRE:" />
-            <TextView style="@style/titulo" android:id="@+id/tvFechaNacimientoDetalle"  android:textAlignment="textStart"  android:text="CUMPLEAÑOS:" />
-            <TextView style="@style/titulo" android:id="@+id/tvDireccionDetalle"        android:textAlignment="textStart"  android:text="DIRECCIÓN:" />
-            <TextView style="@style/titulo" android:id="@+id/tvTelefonoDetalle"         android:textAlignment="textStart"  android:text="TELEFONO:" />
-            <TextView style="@style/titulo" android:id="@+id/tvSemestreDetalle"         android:textAlignment="textStart"  android:text="SEMESTRE:" />
-            <TextView style="@style/titulo" android:id="@+id/tvCarreraDetalle"          android:textAlignment="textStart"  android:text="CARRERA:" />
-            <com.github.snowdream.android.widget.SmartImageView android:id="@+id/ivFotoDetalle" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+            <LinearLayout
+                style="@style/layout"
+                android:orientation="vertical">
 
-    </ScrollView>
+                <com.github.snowdream.android.widget.SmartImageView android:id="@+id/ivFotoDetalle" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView style="@style/titulo" android:id="@+id/tvIdDetalle"               android:textAlignment="textStart"  android:text="ID:" />
+                <TextView style="@style/titulo" android:id="@+id/tvNombreDetalle"           android:textAlignment="textStart"  android:text="NOMBRE:" />
+                <TextView style="@style/titulo" android:id="@+id/tvFechaNacimientoDetalle"  android:textAlignment="textStart"  android:text="CUMPLEAÑOS:" />
+                <TextView style="@style/titulo" android:id="@+id/tvDireccionDetalle"        android:textAlignment="textStart"  android:text="DIRECCIÓN:" />
+                <TextView style="@style/titulo" android:id="@+id/tvTelefonoDetalle"         android:textAlignment="textStart"  android:text="TELEFONO:" />
+                <TextView style="@style/titulo" android:id="@+id/tvSemestreDetalle"         android:textAlignment="textStart"  android:text="SEMESTRE:" />
+                <TextView style="@style/titulo" android:id="@+id/tvCarreraDetalle"          android:textAlignment="textStart"  android:text="CARRERA:" />
 
-</FrameLayout>
+
+
+            </LinearLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        style="@style/layout"
+        android:orientation="vertical"
+        android:paddingTop="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvHistorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blanco"/>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -51,6 +51,11 @@
                     <Spinner android:id="@+id/sGrupo" android:layout_weight="1" style="@style/spinner"/>
 
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btAlumnoAceptar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Filtrar"/>
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>

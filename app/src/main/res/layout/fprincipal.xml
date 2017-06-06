@@ -33,7 +33,7 @@
                     android:id="@+id/person_name"
                     android:layout_toRightOf="@+id/person_photo"
                     android:layout_alignParentTop="true"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     android:text = "Bienvenidos al CBTis 268"
                     />
 

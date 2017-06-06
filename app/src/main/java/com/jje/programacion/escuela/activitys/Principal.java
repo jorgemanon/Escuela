@@ -3,16 +3,17 @@ package com.jje.programacion.escuela.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.jje.programacion.escuela.FAlumnoDetalle;
-import com.jje.programacion.escuela.FAlumnos;
+import com.jje.programacion.escuela.FAlumno;
 import com.jje.programacion.escuela.FPrincipal;
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.modelo.Alumno;
 import com.jje.programacion.escuela.utilerias.Log;
 
 public class Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -31,16 +32,33 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
             switch(fragmento){
                 case "FAlumnoDetalle":
                     Log.e("es alumno detalle");
+                    FAlumnoDetalle fad = new FAlumnoDetalle();
+                    fad.setArguments(args);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contenedor,fad)
+                            .addToBackStack(null)
+                            .commit();
+                    break;
 
-                    FAlumnoDetalle fa = new FAlumnoDetalle();
+                case "FAlumno":
+                    Log.e("es alumno");
+                    FAlumno fa = new FAlumno();
                     fa.setArguments(args);
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.contenedor,fa)
                             .addToBackStack(null)
                             .commit();
                     break;
+                case "FPrincipal":
+                    Log.e("es principal");
+                    FPrincipal fp = new FPrincipal();
+                    fp.setArguments(args);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contenedor,fp)
+                            .addToBackStack(null)
+                            .commit();
+                    break;
             }
-
         }else{
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.contenedor,new FPrincipal())
@@ -58,7 +76,7 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
             overridePendingTransition(R.anim.zoom_forward_in, R.anim.zoom_forward_out);
         } else if (id == R.id.nav_alumno) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.contenedor,new FAlumnos())
+                    .replace(R.id.contenedor,new FAlumno())
                     .addToBackStack(null)
                     .setCustomAnimations(
                             android.R.anim.overshoot_interpolator,
@@ -85,4 +103,12 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

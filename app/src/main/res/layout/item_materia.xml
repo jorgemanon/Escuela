@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layout"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        style="@style/layout"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView style="@style/titulo" android:id="@+id/tvMateria"  android:text="Materia: " android:textAlignment="textStart"/>
+        <TextView style="@style/subtitulo" android:id="@+id/tvMaestro"  android:text="Maestro: " android:textAlignment="textStart"/>
+        <TextView style="@style/subtitulo" android:id="@+id/tvHorario"        android:text="Horario: " android:textAlignment="textStart"/>
+        <TextView style="@style/subtitulo" android:id="@+id/tvAula"     android:text="Grupo: " android:textAlignment="textStart"/>
+    </LinearLayout>
+    <LinearLayout
+        style="@style/layout"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <TextView style="@style/titulo"   android:text="Calificación: " android:textAlignment="textStart"/>
+        <TextView style="@style/titulo" android:id="@+id/tvCalificacion"  android:text="80" android:textAlignment="center" android:textSize="35dp"/>
+    </LinearLayout>
+
+</LinearLayout>

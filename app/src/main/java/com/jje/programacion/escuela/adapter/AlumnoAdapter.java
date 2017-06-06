@@ -2,12 +2,7 @@ package com.jje.programacion.escuela.adapter;
 
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +19,7 @@ import com.jje.programacion.escuela.viewholder.AlumnoViewHolder;
 import com.jje.programacion.escuela.viewholder.FooterViewHolder;
 
 import java.util.List;
+
 import static com.jje.programacion.escuela.utilerias.Config.redondearBitmapFoto;
 
 public class AlumnoAdapter extends RecyclerView.Adapter {
@@ -63,7 +59,6 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
         try{
             if (holder instanceof AlumnoViewHolder) {
                 Alumno alumno = (Alumno) alumnoLista.get(position);
-                Log.e("Contador-->"+getItemCount());
                 AlumnoViewHolder alumnoViewHolder = (AlumnoViewHolder) holder;
                 alumnoViewHolder.getTvId().setText("Id: "+alumno.getAlumnoId());
                 alumnoViewHolder.getTvNombre().setText("Nombre: "+alumno.getNombre()+" "+alumno.getApellidoPaterno()+" "+alumno.getApellidoMaterno());
@@ -71,14 +66,13 @@ public class AlumnoAdapter extends RecyclerView.Adapter {
                 alumnoViewHolder.getTvSemestre().setText("Semestre:"+alumno.getSemestre());
 
                 try{
-                    /**********
-                    alumnoViewHolder.getIvFoto().setImageUrl(Config.url_fotos+alumno.getFoto(),new Rect());
-                    /**********/
-
-                    Log.e(Config.url_fotos+alumno.getFoto());
-                    Bitmap imagen = new WebImage(Config.url_fotos+alumno.getFoto(),700,700).getBitmap(alumnoViewHolder.getIvFoto().getContext());
-                    imagen = redondearBitmapFoto(imagen,1000);
-                    alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
+                    Bitmap imagen = new WebImage(Config.url_fotos+alumno.getFoto()).getBitmap(alumnoViewHolder.getIvFoto().getContext());
+                    if(imagen!=null){
+                        imagen = redondearBitmapFoto(imagen,1000);
+                        alumnoViewHolder.getIvFoto().setImageBitmap(imagen);
+                    }else{
+                        alumnoViewHolder.getIvFoto().setImageUrl(Config.url_fotos+alumno.getFoto(),new Rect());
+                    }
                 }catch(Exception e){
                     Log.e("Error imagen-->"+e);
                 }

@@ -1,11 +1,8 @@
 package com.jje.programacion.escuela.viewholder;
 
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.github.snowdream.android.widget.SmartImageView;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
