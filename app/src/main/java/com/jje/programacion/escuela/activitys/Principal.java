@@ -1,11 +1,16 @@
 package com.jje.programacion.escuela.activitys;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.transition.Transition;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.TransitionInflater;
 import android.view.MenuItem;
 
 import com.jje.programacion.escuela.FAlumno;
@@ -78,8 +83,8 @@ public class Principal extends MyActivity implements NavigationView.OnNavigation
                     .replace(R.id.contenedor,new FAlumno())
                     .addToBackStack(null)
                     .setCustomAnimations(
-                            android.R.anim.overshoot_interpolator,
-                            android.R.anim.overshoot_interpolator)
+                            R.anim.fragment_slide_left_enter,
+                            R.anim.fragment_slide_left_exit)
                     .commit();
         } else if (id == R.id.nav_maestro) {
 

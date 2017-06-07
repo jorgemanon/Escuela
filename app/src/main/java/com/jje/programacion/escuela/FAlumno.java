@@ -2,7 +2,6 @@ package com.jje.programacion.escuela;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.jje.programacion.escuela.activitys.Principal;
+import com.jje.programacion.escuela.utilerias.AnimacionJAVA;
 import com.jje.programacion.escuela.utilerias.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.jje.programacion.escuela.ServicioEscuela.VolleyEscuela;
@@ -118,11 +119,6 @@ public class FAlumno extends Fragment {
             @Override
             public void onClick(View v) {
                 try{
-
-                    Log.w("carrera-->"+sCarrera.getSelectedItemId());
-                    Log.w("semestre-->"+sSemestre.getSelectedItemId());
-                    Log.w("grupo-->"+sGrupo.getSelectedItemId());
-
                     JSONObject json = new JSONObject();
                     JSONObject rqt = new JSONObject();
                     rqt.put("carrera",(sCarrera.getSelectedItemId()!=0)? sCarrera.getSelectedItemId(): "");
@@ -136,6 +132,23 @@ public class FAlumno extends Fragment {
                 }
             }
         });
+
+        AdapterView.OnItemSelectedListener sListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, final View view, int position, long id) {
+                AnimacionJAVA.littleScaleAnimacion(view);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+
+
+        sCarrera.setOnItemSelectedListener(sListener);
+        sSemestre.setOnItemSelectedListener(sListener);
+        sGrupo.setOnItemSelectedListener(sListener);
     }
 
     @Override
@@ -256,9 +269,11 @@ public class FAlumno extends Fragment {
                             rvAlumno.setAdapter(new AlumnoAdapter(alumno, new RecyclerViewOnItemClickListener() {
                                 @Override
                                 public void onClick(View v, int position) {
+
+                                    AnimacionJAVA.rotarXLeft(v);
                                     if (alumno.size()>0 && alumno.get(position) instanceof Alumno) {
                                         Toast.makeText(getContext(), "Hola "+((Alumno) alumno.get(position)).toString(), Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getActivity(),Principal.class);
+                                        final Intent intent = new Intent(getActivity(),Principal.class);
                                         intent.putExtra("fragmento", "FAlumnoDetalle");
                                         intent.putExtra("alumnoId", ((Alumno) alumno.get(position)).getAlumnoId());
                                         intent.putExtra("nombre", ((Alumno) alumno.get(position)).getNombre());
@@ -270,9 +285,18 @@ public class FAlumno extends Fragment {
                                         intent.putExtra("semestre", ((Alumno) alumno.get(position)).getSemestre());
                                         intent.putExtra("carrera", ((Alumno) alumno.get(position)).getCarrera());
                                         intent.putExtra("foto", ((Alumno) alumno.get(position)).getFoto());
-                                        startActivity(intent);
-
+                                        new Thread(new Runnable() {
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(1000);
+                                                    startActivity(intent);
+                                                } catch (InterruptedException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }).start();
                                     }
+ /*******/
                                 }
                             }));
                             rvAlumno.setLayoutManager(new LinearLayoutManager(getContext()));

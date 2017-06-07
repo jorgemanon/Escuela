@@ -28,9 +28,8 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/person_name"
+                    style="@style/titulo"
                     android:layout_toRightOf="@+id/person_photo"
                     android:layout_alignParentTop="true"
                     android:textSize="28sp"
@@ -38,9 +37,8 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/person_photo"
+                    style="@style/titulo"
                     android:layout_below="@+id/person_name"
                     android:text = "Zitacuaro Michoacan"
                     />

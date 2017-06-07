@@ -14,10 +14,10 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView style="@style/titulo" android:id="@+id/tvMateria"  android:text="Materia: " android:textAlignment="textStart"/>
-        <TextView style="@style/subtitulo" android:id="@+id/tvMaestro"  android:text="Maestro: " android:textAlignment="textStart"/>
-        <TextView style="@style/subtitulo" android:id="@+id/tvHorario"        android:text="Horario: " android:textAlignment="textStart"/>
-        <TextView style="@style/subtitulo" android:id="@+id/tvAula"     android:text="Grupo: " android:textAlignment="textStart"/>
+        <TextView style="@style/subtitulo" android:id="@+id/tvMateria"  android:text="Materia: " android:textAlignment="textStart"/>
+        <TextView style="@style/textForm" android:id="@+id/tvMaestro"  android:text="Maestro: " android:textAlignment="textStart"/>
+        <TextView style="@style/textForm" android:id="@+id/tvHorario"        android:text="Horario: " android:textAlignment="textStart"/>
+        <TextView style="@style/textForm" android:id="@+id/tvAula"     android:text="Grupo: " android:textAlignment="textStart"/>
     </LinearLayout>
     <LinearLayout
         style="@style/layout"

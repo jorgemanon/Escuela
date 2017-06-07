@@ -12,12 +12,13 @@
         style="@style/layout"
         android:minHeight="100dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal|center_vertical">
 
-        <TextView style="@style/titulo"     android:id="@+id/tvId"          android:text="Nombre:"      android:textAlignment="textStart"/>
-        <TextView style="@style/titulo"     android:id="@+id/tvNombre"      android:text="Nombre:"      android:textAlignment="textStart"/>
-        <TextView style="@style/subtitulo"  android:id="@+id/tvCarrera"     android:text="Carrera:"     android:textAlignment="textStart"/>
-        <TextView style="@style/subtitulo"  android:id="@+id/tvSemestre"    android:text="Semestre:"    android:textAlignment="textStart"/>
+        <TextView style="@style/subtitulo"     android:id="@+id/tvId"          android:text="Nombre:"      android:textAlignment="textStart" android:visibility="invisible"/>
+        <TextView style="@style/subtitulo"     android:id="@+id/tvNombre"      android:text="Nombre:"      android:textAlignment="textStart"/>
+        <TextView style="@style/textForm"  android:id="@+id/tvCarrera"     android:text="Carrera:"     android:textAlignment="textStart"/>
+        <TextView style="@style/textForm"  android:id="@+id/tvSemestre"    android:text="Semestre:"    android:textAlignment="textStart"/>
 
     </LinearLayout>
 
@@ -28,7 +29,8 @@
         <com.github.snowdream.android.widget.SmartImageView
             android:id="@+id/ivFoto"
             style="@style/foto"
-            android:src="@drawable/dgti"/>
+            android:src="@drawable/dgti"
+            android:layout_gravity="center_horizontal|center_vertical"/>
 
     </LinearLayout>
 
