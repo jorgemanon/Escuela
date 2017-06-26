@@ -1,23 +1,19 @@
 package com.jje.programacion.escuela.activitys;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.transition.Transition;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.transition.TransitionInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.jje.programacion.escuela.FAlumno;
 import com.jje.programacion.escuela.FAlumnoDetalle;
 import com.jje.programacion.escuela.FPrincipal;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.utilerias.Log;
+import com.jje.programacion.escuela.utilerias.Mensajes;
 import com.jje.programacion.escuela.utilerias.MyActivity;
 
 public class Principal extends MyActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -32,6 +28,7 @@ public class Principal extends MyActivity implements NavigationView.OnNavigation
 
         Bundle args = getIntent().getExtras();
         if(args!=null){
+            Toast.makeText(this,"Fragmento:::--->"+args.getString("fragmento"), Toast.LENGTH_SHORT).show();
             String fragmento = args.getString("fragmento");
             switch(fragmento){
                 case "FAlumnoDetalle":
@@ -69,6 +66,9 @@ public class Principal extends MyActivity implements NavigationView.OnNavigation
                     .addToBackStack(null)
                     .commit();
         }
+
+
+
     }
 
     @Override

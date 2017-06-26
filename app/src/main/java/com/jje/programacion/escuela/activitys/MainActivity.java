@@ -1,10 +1,14 @@
 package com.jje.programacion.escuela.activitys;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.View;
@@ -18,6 +22,7 @@ import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.ServicioEscuela.VolleyEscuela;
 import com.jje.programacion.escuela.utilerias.Config;
 import com.jje.programacion.escuela.utilerias.Log;
+import com.jje.programacion.escuela.utilerias.Mensajes;
 import com.jje.programacion.escuela.utilerias.MyActivity;
 
 import org.json.JSONObject;
@@ -46,7 +51,15 @@ public class MainActivity extends MyActivity {
         ETUsuario.setText(usuario);
         ETContrasena.setText(contrasena);
         initListenerJSON();
-        BEntrar.callOnClick();
+        if(getIntent().getExtras()!=null){
+            if(getIntent().getExtras().getBoolean("entrar")){
+                BEntrar.callOnClick();
+            }
+
+        }else{
+            BEntrar.callOnClick();
+        }
+        Mensajes.mostrarNotificacion(getApplicationContext());
     }
 
     /* INICIALIZAR LOS LISTENER PARA LOS EVENTOS DE RESPONSE Y RESONSE ERROR*/

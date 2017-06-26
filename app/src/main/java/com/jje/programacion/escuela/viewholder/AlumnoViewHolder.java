@@ -6,8 +6,11 @@ import android.widget.TextView;
 import com.github.snowdream.android.widget.SmartImageView;
 import com.jje.programacion.escuela.R;
 import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
+import com.jje.programacion.escuela.utilerias.AnimacionJAVA;
+import com.jje.programacion.escuela.utilerias.Config;
+import com.jje.programacion.escuela.utilerias.Log;
 
-public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private TextView tvNombre, tvCarrera, tvSemestre, tvId;
@@ -22,6 +25,7 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
         ivFoto = (SmartImageView) view.findViewById(R.id.ivFoto);
         this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
         itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
     }
 
     public TextView getTvId() {return tvId;}
@@ -33,5 +37,10 @@ public class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.On
     @Override
     public void onClick(View v) {
         recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        return recyclerViewOnItemClickListener.onLongClick(v, getAdapterPosition());
     }
 }

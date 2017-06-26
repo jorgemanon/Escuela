@@ -5,4 +5,5 @@
     <string name="direccion_cbtis">Direccion:  Crescencio Morales Poniente 144, Las Palmas, 61517 Zitácuaro, Mich.</string>
     <string name="title_activity_colapse">ColapseActivity</string>
     <string name="fuente_letra">fonts/smiley.ttf</string>
+    <string name="title_activity_notification">NotificationActivity</string>
 </resources>

@@ -6,19 +6,19 @@ import android.view.View;
 
 public class AnimacionJAVA {
 
-    public static void rotarXLeft(final View view){
+    public static void rotarXLeft(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                ObjectAnimator oa = ObjectAnimator.ofFloat(view, "rotationX", 0, 360);
-                oa.setDuration(1000);
+                ObjectAnimator oa = ObjectAnimator.ofFloat(view, "rotationX", 0, 720);
+                oa.setDuration(tiempo);
                 oa.start();
             }
         };
         r.run();
     }
 
-    public static void rotarYLeft(final View view){
+    public static void rotarYLeft(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -31,7 +31,7 @@ public class AnimacionJAVA {
 
     }
 
-    public static void rotarXYLeft(final View view){
+    public static void rotarXYLeft(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -50,7 +50,7 @@ public class AnimacionJAVA {
     }
 
 
-    public static void rotarXRight(final View view){
+    public static void rotarXRight(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -62,7 +62,7 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void rotarYRight(final View view){
+    public static void rotarYRight(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -74,7 +74,7 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void rotarXYRight(final View view){
+    public static void rotarXYRight(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -92,7 +92,7 @@ public class AnimacionJAVA {
 
 
 
-    public static void desaparecerAnimacion(final View view){
+    public static void desaparecerAnimacion(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -108,7 +108,7 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void aparecerAnimacion(final View view){
+    public static void aparecerAnimacion(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -124,13 +124,12 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void littleScaleAnimacion(final View view){
-
+    public static void littleScaleAnimacion(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 0.5f);
-                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 0.5f);
+                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 0.8f);
+                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 0.8f);
                 scaleDownY.setDuration(500);
                 AnimatorSet scaleDown = new AnimatorSet();
                 scaleDown.play(scaleDownX).with(scaleDownY);
@@ -150,26 +149,29 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void bigScaleAnimacion(final View view){
-
+    public static void bigScaleAnimacion(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1.5f);
-                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1.5f);
+                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f);
+                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f);
                 scaleDownY.setDuration(500);
                 AnimatorSet scaleDown = new AnimatorSet();
                 scaleDown.play(scaleDownX).with(scaleDownY);
 
-                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f);
-                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f);
+                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1.7f);
+                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1.7f);
                 scaleDownY.setDuration(500);
                 AnimatorSet scaleUp = new AnimatorSet();
                 scaleUp.play(scaleUpX).with(scaleUpY);
 
+                ObjectAnimator scaleNormalX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f);
+                ObjectAnimator scaleNormalY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f);
+                AnimatorSet scaleNormal = new AnimatorSet();
+                scaleNormal.play(scaleNormalX).with(scaleNormalY);
 
                 AnimatorSet scale = new AnimatorSet();
-                scale.playSequentially(scaleDown,scaleUp);
+                scale.playSequentially(scaleDown,scaleUp,scaleNormal);
                 scale.start();
             }
         };

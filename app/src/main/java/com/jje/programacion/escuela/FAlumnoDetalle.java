@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ import com.jje.programacion.escuela.listener.RecyclerViewOnItemClickListener;
 import com.jje.programacion.escuela.modelo.Footer;
 import com.jje.programacion.escuela.modelo.Item;
 import com.jje.programacion.escuela.modelo.Materia;
+import com.jje.programacion.escuela.utilerias.AnimacionJAVA;
 import com.jje.programacion.escuela.utilerias.Config;
 import com.jje.programacion.escuela.utilerias.Log;
 import org.json.JSONArray;
@@ -41,6 +43,7 @@ public class FAlumnoDetalle extends Fragment {
     private View view;
     private Response.Listener listener;
     private Response.ErrorListener listenerError;
+    private CoordinatorLayout clDetalle;
 
     /* RECYCLER REQUIRED */
     private List<Item> materia;
@@ -65,6 +68,8 @@ public class FAlumnoDetalle extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
+        clDetalle = (CoordinatorLayout) view.findViewById(R.id.clDetalle);
+        AnimacionJAVA.bigScaleAnimacion(clDetalle,Config.TIEMPO_INICIO_ANIMACION);
         tvIdDetalle = (TextView) view.findViewById(R.id.tvIdDetalle);
         tvNombreDetalle = (TextView) view.findViewById(R.id.tvNombreDetalle);
         tvFechaNacimientoDetalle = (TextView) view.findViewById(R.id.tvFechaNacimientoDetalle);
@@ -74,6 +79,9 @@ public class FAlumnoDetalle extends Fragment {
         tvCarreraDetalle = (TextView) view.findViewById(R.id.tvCarreraDetalle);
         ivFotoDetalle = (SmartImageView) view.findViewById(R.id.ivFotoDetalle);
         rvMateria = (RecyclerView) view.findViewById(R.id.rvHistorial);
+
+
+
         materia = new ArrayList<Item>();
         hasMore = true;
         /*inicializacion en fragment para JSON*/
@@ -201,9 +209,15 @@ public class FAlumnoDetalle extends Fragment {
                     }
 
                     rvMateria.setAdapter(new MateriaAdapter(materia, new RecyclerViewOnItemClickListener() {
+
                         @Override
                         public void onClick(View v, int position) {
 
+                        }
+
+                        @Override
+                        public boolean onLongClick(View v, int position) {
+                            return false;
                         }
                     }));
                     rvMateria.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -30,6 +30,13 @@ public class Config extends Activity{
 
     public static RequestQueue requestQueue;
     public static int TIEMPO_CARGA_FOOTER = 2000;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
+    public static int TIEMPO_DETALLE_ALUMNO_ANIMACION = 900;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
+    public static int TIEMPO_SPINNER_ANIMACION = 100;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
+    public static int TIEMPO_INICIO_ANIMACION = 100;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
+
+    /* ID PARA NOTIFICACIONES */
+    public static final int NOTIFICATION_ID_1 = 1;
+
 
     public static RequestQueue getInstance(Context context){
         if(requestQueue == null){

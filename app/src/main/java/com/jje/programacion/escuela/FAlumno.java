@@ -136,15 +136,10 @@ public class FAlumno extends Fragment {
         AdapterView.OnItemSelectedListener sListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, final View view, int position, long id) {
-                AnimacionJAVA.littleScaleAnimacion(view);
+                AnimacionJAVA.littleScaleAnimacion(view,Config.TIEMPO_SPINNER_ANIMACION);
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            @Override public void onNothingSelected(AdapterView<?> parent) {}
         };
-
 
         sCarrera.setOnItemSelectedListener(sListener);
         sSemestre.setOnItemSelectedListener(sListener);
@@ -270,9 +265,8 @@ public class FAlumno extends Fragment {
                                 @Override
                                 public void onClick(View v, int position) {
 
-                                    AnimacionJAVA.rotarXLeft(v);
+                                    AnimacionJAVA.rotarXLeft(v,Config.TIEMPO_DETALLE_ALUMNO_ANIMACION);
                                     if (alumno.size()>0 && alumno.get(position) instanceof Alumno) {
-                                        Toast.makeText(getContext(), "Hola "+((Alumno) alumno.get(position)).toString(), Toast.LENGTH_SHORT).show();
                                         final Intent intent = new Intent(getActivity(),Principal.class);
                                         intent.putExtra("fragmento", "FAlumnoDetalle");
                                         intent.putExtra("alumnoId", ((Alumno) alumno.get(position)).getAlumnoId());
@@ -288,7 +282,7 @@ public class FAlumno extends Fragment {
                                         new Thread(new Runnable() {
                                             public void run() {
                                                 try {
-                                                    Thread.sleep(1000);
+                                                    Thread.sleep(Config.TIEMPO_DETALLE_ALUMNO_ANIMACION);
                                                     startActivity(intent);
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
@@ -296,8 +290,25 @@ public class FAlumno extends Fragment {
                                             }
                                         }).start();
                                     }
- /*******/
                                 }
+
+                                @Override
+                                public boolean onLongClick(View v, int position) {
+                                    Log.e("Esta siendo presionado-->");
+                                    AnimacionJAVA.bigScaleAnimacion(v,Config.TIEMPO_INICIO_ANIMACION);
+                                    new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                Thread.sleep(Config.TIEMPO_INICIO_ANIMACION);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }.run();
+                                    return true;
+                                }
+
                             }));
                             rvAlumno.setLayoutManager(new LinearLayoutManager(getContext()));
                             break;
