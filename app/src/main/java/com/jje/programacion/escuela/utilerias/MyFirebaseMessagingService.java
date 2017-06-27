@@ -1,5 +1,9 @@
 package com.jje.programacion.escuela.utilerias;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.support.v7.app.NotificationCompat;
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -19,19 +23,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Log.e("NOTIFICACION RECIBIDA");
                 Log.e("Título: " + titulo);
                 Log.e("Texto: " + texto);
-                //showNotification(titulo, texto);
+                showNotification(titulo, texto);
             }else{
                 Log.e("Es nulo");
             }
         }catch (Exception e){
-            Log.e(e.getMessage());
+            Log.e("ERROR FIREBASE----------------------------->"+e.getMessage());
         }
 
     }
-/*
+
     private void showNotification(String title, String text) {
         NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(this)
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                         .setSmallIcon(android.R.drawable.stat_sys_warning)
                         .setContentTitle(title)
                         .setContentText(text);
@@ -42,5 +46,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(0, notificationBuilder.build());
     }
 
-    */
+
 }
