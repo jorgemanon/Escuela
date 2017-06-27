@@ -1,5 +1,6 @@
 package com.jje.programacion.escuela.activitys;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -7,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +58,7 @@ public class MainActivity extends MyActivity {
         }else{
             BEntrar.callOnClick();
         }
-        Mensajes.mostrarNotificacion(getApplicationContext());
+        //Mensajes.mostrarNotificacion(getApplicationContext());
     }
 
     /* INICIALIZAR LOS LISTENER PARA LOS EVENTOS DE RESPONSE Y RESONSE ERROR*/
@@ -72,8 +74,9 @@ public class MainActivity extends MyActivity {
                         Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("Response--->"+response.toString());
-                }catch(Exception e){}
-
+                }catch(Exception e){
+                    Log.e("ERROR-->"+e.getMessage());
+                }
             }
         };
 

@@ -188,8 +188,8 @@ public class AnimacionJAVA {
                 AnimatorSet scaleDown = new AnimatorSet();
                 scaleDown.play(scaleDownX).with(scaleDownY);
 
-                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 0.5f);
-                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 0.5f);
+                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 0.8f);
+                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 0.8f);
                 scaleDownY.setDuration(tiempo);
                 AnimatorSet scaleUp = new AnimatorSet();
                 scaleUp.play(scaleUpX).with(scaleUpY);

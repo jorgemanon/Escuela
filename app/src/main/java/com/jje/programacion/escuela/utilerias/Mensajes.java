@@ -6,12 +6,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.jje.programacion.escuela.R;
-import com.jje.programacion.escuela.activitys.MainActivity;
 import com.jje.programacion.escuela.activitys.NotificationActivity;
 
 /**
@@ -20,17 +19,16 @@ import com.jje.programacion.escuela.activitys.NotificationActivity;
 
 public class Mensajes {
 
-    public static void mensajeOpciones(final Context context){
+    public static void mensajeOpciones(Context context){
         final String[] items = {"No", "SinMi", "Ubuntu"};
         AlertDialog.Builder dialogo = new AlertDialog.Builder(context);
 
         dialogo.setTitle("Selecciona una opción");
         dialogo.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
-                Toast.makeText(context, items[item], Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, items[item], Toast.LENGTH_LONG).show();
             }
         });
-
         dialogo.create();
         dialogo.show();
     }

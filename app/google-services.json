@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "92019518829",
+    "firebase_url": "https://escuela-d5aa5.firebaseio.com",
+    "project_id": "escuela-d5aa5",
+    "storage_bucket": "escuela-d5aa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92019518829:android:92beb49307f923ca",
+        "android_client_info": {
+          "package_name": "com.jje.programacion.escuela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92019518829-cc6ok3h385g962ma1m7nndhfd55j60u3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jje.programacion.escuela",
+            "certificate_hash": "843b19d39db3120c0112dda31cf074aa6ee29a29"
+          }
+        },
+        {
+          "client_id": "92019518829-efee569q860qqmqq9qcpm9d0kpubtfub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbKyka1y2JspiGipCBLZ3Gzj9LWyu1wgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92019518829-efee569q860qqmqq9qcpm9d0kpubtfub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
