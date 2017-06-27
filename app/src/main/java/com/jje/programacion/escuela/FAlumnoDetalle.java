@@ -69,7 +69,6 @@ public class FAlumnoDetalle extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
         clDetalle = (CoordinatorLayout) view.findViewById(R.id.clDetalle);
-        AnimacionJAVA.bigScaleAnimacion(clDetalle,Config.TIEMPO_INICIO_ANIMACION);
         tvIdDetalle = (TextView) view.findViewById(R.id.tvIdDetalle);
         tvNombreDetalle = (TextView) view.findViewById(R.id.tvNombreDetalle);
         tvFechaNacimientoDetalle = (TextView) view.findViewById(R.id.tvFechaNacimientoDetalle);
@@ -79,7 +78,7 @@ public class FAlumnoDetalle extends Fragment {
         tvCarreraDetalle = (TextView) view.findViewById(R.id.tvCarreraDetalle);
         ivFotoDetalle = (SmartImageView) view.findViewById(R.id.ivFotoDetalle);
         rvMateria = (RecyclerView) view.findViewById(R.id.rvHistorial);
-
+        AnimacionJAVA.littleScaleAnimacion(clDetalle,1500);
 
 
         materia = new ArrayList<Item>();

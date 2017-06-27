@@ -124,7 +124,7 @@ public class AnimacionJAVA {
         r.run();
     }
 
-    public static void littleScaleAnimacion(final View view, final int tiempo){
+    public static void littleScaleAnimacion_spinner(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -177,4 +177,34 @@ public class AnimacionJAVA {
         };
         r.run();
     }
+
+    public static void littleScaleAnimacion(final View view, final int tiempo){
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f);
+                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f);
+                scaleDownY.setDuration(tiempo);
+                AnimatorSet scaleDown = new AnimatorSet();
+                scaleDown.play(scaleDownX).with(scaleDownY);
+
+                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 0.5f);
+                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 0.5f);
+                scaleDownY.setDuration(tiempo);
+                AnimatorSet scaleUp = new AnimatorSet();
+                scaleUp.play(scaleUpX).with(scaleUpY);
+
+                ObjectAnimator scaleNormalX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f);
+                ObjectAnimator scaleNormalY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f);
+                AnimatorSet scaleNormal = new AnimatorSet();
+                scaleNormal.play(scaleNormalX).with(scaleNormalY);
+
+                AnimatorSet scale = new AnimatorSet();
+                scale.playSequentially(scaleDown,scaleUp,scaleNormal);
+                scale.start();
+            }
+        };
+        r.run();
+    }
+
 }

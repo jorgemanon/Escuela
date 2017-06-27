@@ -10,7 +10,37 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        super.onMessageReceived(remoteMessage);
-        Log.e(remoteMessage.getNotification().getBody());
+
+        Log.d(remoteMessage.toString());
+        try{
+            if (remoteMessage.getNotification() != null) {
+                String titulo = remoteMessage.getNotification().getTitle().toString();
+                String texto = remoteMessage.getNotification().getBody().toString();
+                Log.e("NOTIFICACION RECIBIDA");
+                Log.e("Título: " + titulo);
+                Log.e("Texto: " + texto);
+                //showNotification(titulo, texto);
+            }else{
+                Log.e("Es nulo");
+            }
+        }catch (Exception e){
+            Log.e(e.getMessage());
+        }
+
     }
+/*
+    private void showNotification(String title, String text) {
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(android.R.drawable.stat_sys_warning)
+                        .setContentTitle(title)
+                        .setContentText(text);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0, notificationBuilder.build());
+    }
+
+    */
 }

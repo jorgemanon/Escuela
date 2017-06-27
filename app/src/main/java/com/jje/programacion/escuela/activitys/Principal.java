@@ -28,7 +28,6 @@ public class Principal extends MyActivity implements NavigationView.OnNavigation
 
         Bundle args = getIntent().getExtras();
         if(args!=null){
-            Toast.makeText(this,"Fragmento:::--->"+args.getString("fragmento"), Toast.LENGTH_SHORT).show();
             String fragmento = args.getString("fragmento");
             switch(fragmento){
                 case "FAlumnoDetalle":

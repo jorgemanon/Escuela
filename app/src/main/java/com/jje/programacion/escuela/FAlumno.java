@@ -136,7 +136,7 @@ public class FAlumno extends Fragment {
         AdapterView.OnItemSelectedListener sListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, final View view, int position, long id) {
-                AnimacionJAVA.littleScaleAnimacion(view,Config.TIEMPO_SPINNER_ANIMACION);
+                AnimacionJAVA.littleScaleAnimacion_spinner(view,Config.TIEMPO_SPINNER_ANIMACION);
             }
             @Override public void onNothingSelected(AdapterView<?> parent) {}
         };
