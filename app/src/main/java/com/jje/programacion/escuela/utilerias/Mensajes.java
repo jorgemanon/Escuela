@@ -11,6 +11,7 @@ import android.support.v7.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.ServicioEscuela.MyFirebaseMessagingService;
 import com.jje.programacion.escuela.activitys.NotificationActivity;
 
 /**
@@ -26,7 +27,7 @@ public class Mensajes {
         dialogo.setTitle("Selecciona una opción");
         dialogo.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
-                //Toast.makeText(context, items[item], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, items[item], Toast.LENGTH_LONG).show();
             }
         });
         dialogo.create();
@@ -55,5 +56,16 @@ public class Mensajes {
                 .setVibrate(new long[] {100, 250, 100, 500})
                 .build();
         nm.notify(Config.NOTIFICATION_ID_1, noti);
+    }
+
+    public static void showNotification(String title, String text, Object systemService,MyFirebaseMessagingService mfb) {
+        NotificationCompat.Builder notificationBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(mfb)
+                        .setSmallIcon(R.drawable.cbtis)
+                        .setContentTitle(title)
+                        .setContentText(text);
+
+        NotificationManager notificationManager = (NotificationManager) systemService;
+        notificationManager.notify(0, notificationBuilder.build());
     }
 }

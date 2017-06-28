@@ -1,4 +1,4 @@
-package com.jje.programacion.escuela.utilerias;
+package com.jje.programacion.escuela.ServicioEscuela;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.support.v7.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.jje.programacion.escuela.R;
+import com.jje.programacion.escuela.utilerias.Log;
+import com.jje.programacion.escuela.utilerias.Mensajes;
 
 /**
  * Created by jorgemanon on 26/06/17.
@@ -23,7 +26,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Log.e("NOTIFICACION RECIBIDA");
                 Log.e("Título: " + titulo);
                 Log.e("Texto: " + texto);
-                showNotification(titulo, texto);
+                Mensajes.showNotification(titulo, texto,getSystemService(Context.NOTIFICATION_SERVICE), this);
             }else{
                 Log.e("Es nulo");
             }
@@ -33,18 +36,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-    private void showNotification(String title, String text) {
-        NotificationCompat.Builder notificationBuilder =
-                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(android.R.drawable.stat_sys_warning)
-                        .setContentTitle(title)
-                        .setContentText(text);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        notificationManager.notify(0, notificationBuilder.build());
-    }
 
 
 }

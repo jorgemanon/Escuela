@@ -55,6 +55,7 @@ public class MainActivity extends MyActivity {
         }else{
             BEntrar.callOnClick();
         }
+
         //Mensajes.mostrarNotificacion(getApplicationContext());
     }
 
