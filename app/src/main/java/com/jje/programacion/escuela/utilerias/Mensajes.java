@@ -20,7 +20,7 @@ import com.jje.programacion.escuela.activitys.NotificationActivity;
 
 public class Mensajes {
 
-    public static void mensajeOpciones(Context context){
+    public static void mensajeOpciones(final Context context){
         final String[] items = {"No", "SinMi", "Ubuntu"};
         AlertDialog.Builder dialogo = new AlertDialog.Builder(context);
 

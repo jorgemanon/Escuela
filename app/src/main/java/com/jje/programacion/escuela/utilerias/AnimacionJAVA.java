@@ -50,6 +50,31 @@ public class AnimacionJAVA {
     }
 
 
+    public static void rotarXRightSplash(final View view, final int tiempo){
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                AnimatorSet set1 = new AnimatorSet();
+                set1.play(ObjectAnimator.ofFloat(view, "rotationX", 360, 0));
+                set1.setDuration(tiempo);
+
+                AnimatorSet set2 = new AnimatorSet();
+                set2.play(ObjectAnimator.ofFloat(view, "rotationX", 360, 0));
+                set2.setDuration(tiempo);
+
+                AnimatorSet set = new AnimatorSet();
+                set.playSequentially(set1,set2);
+                set.start();
+
+
+                ObjectAnimator oa = ObjectAnimator.ofFloat(view, "rotationX", 360, 0);
+                oa.setDuration(1000);
+                oa.start();
+            }
+        };
+        r.run();
+    }
+
     public static void rotarXRight(final View view, final int tiempo){
         Runnable r = new Runnable() {
             @Override

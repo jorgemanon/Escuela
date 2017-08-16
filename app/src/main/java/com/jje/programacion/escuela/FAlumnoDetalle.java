@@ -30,6 +30,8 @@ import com.jje.programacion.escuela.modelo.Materia;
 import com.jje.programacion.escuela.utilerias.AnimacionJAVA;
 import com.jje.programacion.escuela.utilerias.Config;
 import com.jje.programacion.escuela.utilerias.Log;
+import com.jje.programacion.escuela.utilerias.Mensajes;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class FAlumnoDetalle extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
-        clDetalle = (CoordinatorLayout) view.findViewById(R.id.clDetalle);
+        clDetalle = (CoordinatorLayout) view.findViewById(R.id.clAlumnoDetalle);
         tvIdDetalle = (TextView) view.findViewById(R.id.tvIdDetalle);
         tvNombreDetalle = (TextView) view.findViewById(R.id.tvNombreDetalle);
         tvFechaNacimientoDetalle = (TextView) view.findViewById(R.id.tvFechaNacimientoDetalle);

@@ -29,11 +29,11 @@
                 android:orientation="vertical"
                 android:gravity="center|center_vertical">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/IPerfil"
                     style="@style/foto"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/estilo_foto"
+                    android:background="@drawable/dgetiredondo"
                     android:scaleType="fitXY"
                     />
 

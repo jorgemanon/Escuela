@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/linearContenedor"
+    tools:context=".SplashScreenActivity"
+    >
+
+    <LinearLayout
+        android:id="@+id/contenedorSplash"
+        style="@style/linearContenedor"
+        android:gravity="center_horizontal|center_vertical">
+
+        <ImageView
+            android:id="@+id/ivSplashScreen"
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/dgetiredondo"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

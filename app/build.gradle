@@ -23,10 +23,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
@@ -37,7 +38,6 @@ dependencies {
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.github.snowdream.android:smartimageview:0.0.2'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-
     compile 'com.google.firebase:firebase-core:9.6.1'
     compile 'com.google.firebase:firebase-messaging:9.6.1'
     compile 'com.google.firebase:firebase-database:9.6.1'
@@ -48,7 +48,8 @@ dependencies {
     compile 'com.google.firebase:firebase-invites:9.6.1'
     compile 'com.google.firebase:firebase-ads:9.6.1'
     compile 'com.google.android.gms:play-services-appindexing:9.6.1'
-
+    testCompile 'junit:junit:4.12'
 }
+
 
 apply plugin: 'com.google.gms.google-services'

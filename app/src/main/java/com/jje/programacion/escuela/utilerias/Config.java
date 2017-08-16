@@ -2,6 +2,7 @@ package com.jje.programacion.escuela.utilerias;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,7 +11,11 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -33,6 +38,7 @@ public class Config extends Activity{
     public static int TIEMPO_DETALLE_ALUMNO_ANIMACION = 900;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
     public static int TIEMPO_SPINNER_ANIMACION = 100;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
     public static int TIEMPO_INICIO_ANIMACION = 100;//TIEMPO DE ESPERA AL CARGAR EL RECYCLER
+    public static final long SPLASH_SCREEN_DELAY = 3000;
 
     /* ID PARA NOTIFICACIONES */
     public static final int NOTIFICATION_ID_1 = 1;

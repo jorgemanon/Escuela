@@ -30,6 +30,7 @@ public class MainActivity extends MyActivity {
     private Button BEntrar;
     private String usuario;
     private String contrasena;
+    private ImageView ivPerfil;
     private MainActivity mainActivity = this;
 
     /* DECLARACION DE LAS VARIABLES PARA LOS LISTENER DEL JSON*/
@@ -40,8 +41,11 @@ public class MainActivity extends MyActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ivPerfil = (ImageView) findViewById(R.id.IPerfil);
+        //redondearImageView(ivPerfil);
+
         initComponents();
-        redondearImagePerfil();
+
         usuario = verLlave("usuario");
         contrasena = verLlave(usuario);
         ETUsuario.setText(usuario);
@@ -113,14 +117,6 @@ public class MainActivity extends MyActivity {
         });
     }
 
-    public void redondearImagePerfil(){
-        Bitmap originalBitmap = ((BitmapDrawable) getResources().getDrawable(R.drawable.portada)).getBitmap();
-        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
-        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
-        ImageView imageView = (ImageView) findViewById(R.id.IPerfil);
-        imageView.setImageDrawable(roundedDrawable);
-    }
-
     public void añadirLlave(String llave, String valor){
         SharedPreferences prefs = getSharedPreferences("escuela", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -131,5 +127,12 @@ public class MainActivity extends MyActivity {
     public String verLlave(String llave){
         SharedPreferences prefs = getSharedPreferences("escuela",Context.MODE_PRIVATE);
         return prefs.getString(llave,"null");
+    }
+
+    public void redondearImageView(ImageView image){
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(this.getResources(), bitmap);
+        roundedDrawable.setCornerRadius(bitmap.getHeight());
+        image.setImageDrawable(roundedDrawable);
     }
 }
