@@ -31,6 +31,7 @@ public class Config extends Activity{
     public static final String url_aula = servidor+"Servicio/Aula.php";
     public static final String url_historial = servidor+"Servicio/Historial.php";
     public static final String url_alumno = servidor+"Servicio/Alumno.php";
+    public static final String url_maestro = servidor+"Servicio/Maestro.php";
     public static final String url_fotos = servidor+"fotos/";
 
     public static RequestQueue requestQueue;

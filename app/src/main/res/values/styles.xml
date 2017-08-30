@@ -150,6 +150,12 @@
         <item name="android:layout_height">100dp</item>
     </style>
 
+    <!-- DISEÑO DE LA FOTO DEL ESTUDIANTE -->
+    <style name="camara">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">400dp</item>
+    </style>
+
     <style name="AppTheme.NoActionBar.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

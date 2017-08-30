@@ -1,0 +1,57 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/layout"
+    android:background="@color/blanco">
+
+    <ScrollView style="@style/layout">
+
+    <LinearLayout
+        style="@style/layout"
+        android:orientation="vertical"
+        android:paddingTop="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            style="@style/linearRow"
+            android:orientation="horizontal">
+            <TextView style="@style/subtitulo"  android:text="Nombre: " android:layout_weight="3"/>
+            <EditText style="@style/textForm"  android:id="@+id/etMaestroNombre"   android:hint="Nombre" android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearRow"
+            android:orientation="horizontal">
+            <TextView style="@style/subtitulo"  android:text="Paterno: " android:layout_weight="3"/>
+            <EditText style="@style/textForm"  android:id="@+id/etMaestroApellidoPaterno"   android:hint="Paterno" android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearRow"
+            android:orientation="horizontal">
+            <TextView style="@style/subtitulo"  android:text="Materno: " android:layout_weight="3"/>
+            <EditText style="@style/textForm"  android:id="@+id/etMaestroApellidoMaterno"   android:hint="Materno" android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearRow">
+
+            <ImageView
+                android:id="@+id/ivCaptura"
+                style="@style/camara"
+                android:src="@drawable/icono"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnMaestroAdd"
+            style="@style/boton"
+            android:text="Agregar"/>
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

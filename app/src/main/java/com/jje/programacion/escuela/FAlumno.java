@@ -69,12 +69,14 @@ public class FAlumno extends Fragment {
         sSemestre = (Spinner) view.findViewById(R.id.sSemestre);
         sGrupo = (Spinner) view.findViewById(R.id.sGrupo);
         rvAlumno = (RecyclerView) view.findViewById(R.id.rvAlumno);
-        btAlumnoAceptar = (Button) view.findViewById(R.id.btAlumnoAceptar);
+        btAlumnoAceptar = (Button) view.findViewById(R.id.btnAlumnoAceptar);
         alumno = new ArrayList<Item>();
         hasMore = true;
         /*inicializacion en fragment para JSON*/
         this.view = view;
+
         initListenerJSON();
+
         rvAlumno.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rvAlumno, int dx, int dy) {

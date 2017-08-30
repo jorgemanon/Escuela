@@ -6,4 +6,8 @@
     <string name="title_activity_colapse">ColapseActivity</string>
     <string name="fuente_letra">fonts/smiley.ttf</string>
     <string name="title_activity_notification">NotificationActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_fmaestro_add">FMaestroAdd</string>
 </resources>
