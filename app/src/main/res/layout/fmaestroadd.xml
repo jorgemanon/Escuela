@@ -49,6 +49,11 @@
             style="@style/boton"
             android:text="Agregar"/>
 
+        <Button
+            android:id="@+id/btnMaestroCamara"
+            style="@style/boton"
+            android:text="Tomar Foto"/>
+
 
 
     </LinearLayout>
